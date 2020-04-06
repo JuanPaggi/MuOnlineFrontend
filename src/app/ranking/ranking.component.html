@@ -24,19 +24,19 @@
     <thead>
       <tr>
         <th scope="col">rank</th>
-        <th scope="col">name</th>
-        <th scope="col">class</th>
-        <th scope="col">level</th>
+        <th scope="col">nombre</th>
+        <th scope="col">clase</th>
+        <th scope="col">nivel</th>
         <th scope="col">reset</th>
-        <th scope="col">country</th>
+        <th scope="col">pais</th>
       </tr>
     </thead>
     <tbody *ngFor="let item of ranking">
       <tr>
         <th scope="row"> {{item.rank}} </th>
         <td>{{item.nombre}}</td>
-        <td>{{item.class}}</td>
-        <td>{{item.level}}</td>
+        <td>{{item.clase}}</td>
+        <td>{{item.nivel}}</td>
         <td>{{item.reset}}</td>
         <td>{{item.pais}}</td>
       </tr>
