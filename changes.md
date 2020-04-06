@@ -27,3 +27,7 @@
 -Cambie todos los .css por bootstrap
 -Cree todos los componentes en angular(falta la logica)
 -Register hecho(falta linkear con database)
+
+# Joaco T - 6/4/2020
+
+-Diseno componente news(falta logica)
