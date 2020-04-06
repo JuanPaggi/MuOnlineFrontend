@@ -36,4 +36,5 @@
 # El negro - 6/4/2020
 
 -Se creo el ranking (falta logica)
--Cambien variables al españols
+-Cambien variables al español
+-Se creo el componente login
