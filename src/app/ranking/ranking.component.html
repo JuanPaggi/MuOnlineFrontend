@@ -1,0 +1,44 @@
+<div class=" text-center">
+    <a class="btn btn-primary mx-1" href="/">DK</a>
+    <a class="btn btn-primary mx-1" href="/">BK</a>
+    <a class="btn btn-primary mx-1" href="/">BM</a>
+    <a class="btn btn-primary mx-1" href="/">ELF</a>
+    <a class="btn btn-primary mx-1" href="/">ME</a>
+    <a class="btn btn-primary mx-1" href="/">HE</a>
+    <a class="btn btn-primary mx-1" href="/">sum</a>
+    <a class="btn btn-primary mx-1" href="/">BS</a>
+    <a class="btn btn-primary mx-1" href="/">DIM</a>
+    <br>
+    <a class="btn btn-primary mx-1 my-1" href="/">DW</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">SM</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">GM</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">DL</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">LE</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">MG</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">DM</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">RF</a>
+    <a class="btn btn-primary mx-1 my-1" href="/">FM</a>
+  </div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">rank</th>
+        <th scope="col">name</th>
+        <th scope="col">class</th>
+        <th scope="col">level</th>
+        <th scope="col">reset</th>
+        <th scope="col">country</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of ranking">
+      <tr>
+        <th scope="row"> {{item.rank}} </th>
+        <td>{{item.nombre}}</td>
+        <td>{{item.class}}</td>
+        <td>{{item.level}}</td>
+        <td>{{item.reset}}</td>
+        <td>{{item.pais}}</td>
+      </tr>
+    </tbody>
+  </table>
