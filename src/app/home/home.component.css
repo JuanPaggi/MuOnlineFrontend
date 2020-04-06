@@ -1,37 +1,53 @@
-.home{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
+.home {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.container{
-    width: 1024px;
-    background-color: whitesmoke;
+.container {
+  width: 1024px;
+  background-color: white;
 }
 
 /* ----- CUERPO ----- */
 
-.cuerpo-container{
-    display: grid;
-    height: 100%;
-    grid-template-columns: 20% 60% 20%;
-    grid-template-areas: "left center right";
+.cuerpo-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-areas: "left center right";
 }
 
-.left{
+.left {
   grid-area: left;
-  height: inherit;
+  padding-right: 10px;
+  border-right: 1px solid lightgray;
 }
 
-.center{
+span {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.center {
   grid-area: center;
   height: inherit;
 }
 
-.right{
+.right {
   grid-area: right;
-  height: inherit;
+  padding-left: 10px;
+  border-left: 1px solid lightgray;
 }
 
+.columna {
+  height: inherit;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 /* ----- CUERPO ----- */
