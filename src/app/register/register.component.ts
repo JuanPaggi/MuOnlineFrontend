@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { CreateUser } from '../dto/dto_create/CreateUser';
+import { CreateUser } from '../dto/dto_usuarios/CreateUser';
 import { UsersService } from '../services/users/users.service';
 import { Router } from '@angular/router';
 
@@ -34,10 +34,10 @@ export class RegisterComponent implements OnInit {
     if (this.password1 == this.password2) {
       if (this.register_form.valid) {
         const user = new CreateUser();
-        user.name = this.name;
-        user.username = this.username;
+        user.nombre = this.name;
+        user.usuario = this.username;
         user.email = this.email;
-        user.password = this.password1;
+        user.clave = this.password1;
         this.user_service.add_user(user).subscribe(
           (response) => {
             console.log(response);
