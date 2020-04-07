@@ -38,3 +38,15 @@
 -Se creo el ranking (falta logica)
 -Cambien variables al español
 -Se creo el componente login
+-Cambien variables al españols
+# Joaco T - 6/4/2020
+
+-Se agregaron 3 dependencias en appmodels(ReactiveFormModule, FormModule, HttpClientModule)
+-Se agrego logica y servicio(post) al componente REGISTER
+-Cambio en formulario register
+
+# Joaco T - 7/4/2020
+
+-Se agrego componente PageNotFound
+-Se soluciono logica de routeo de contenido en componente home
+-Se agrego routeo al componente header

@@ -23,6 +23,7 @@
   width: 20%;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 .boton-enlace:hover {
@@ -30,5 +31,5 @@
 }
 
 .boton-enlace:active {
-  background: linear-gradient(180deg, rgb(60, 60, 60) 0%, rgb(70, 70, 70) 49%);
+  background-color: black;
 }

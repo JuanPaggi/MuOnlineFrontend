@@ -8,13 +8,15 @@
           <div>
             <span>Menu</span>
             <div class="list-group list-group-flush">
-              <a class="list-group-item" href="/">Noticias</a>
-              <a class="list-group-item" href="/">Descargas</a>
-              <a class="list-group-item" href="/">Ranking</a>
-              <a class="list-group-item" href="/">Tienda</a>
-              <a class="list-group-item" href="/">Contacto</a>
-              <a class="list-group-item" href="/">Condiciones de uso</a>
-              <a class="list-group-item" href="/">Foros y guias</a>
+              <a class="list-group-item" routerLink="/">Noticias</a>
+              <a class="list-group-item" routerLink="/downloads">Descargas</a>
+              <a class="list-group-item" routerLink="/ranking">Ranking</a>
+              <a class="list-group-item" routerLink="/shop">Tienda</a>
+              <a class="list-group-item" routerLink="/contact">Contacto</a>
+              <a class="list-group-item" routerLink="/useconditions"
+                >Condiciones de uso</a
+              >
+              <a class="list-group-item" routerLink="/forum">Foros y guias</a>
             </div>
           </div>
           <div class="dropdown-divider"></div>
@@ -34,7 +36,7 @@
       </div>
       <!-- CONTENIDO -->
       <div class="center pt-3 px-3">
-        <app-downloads></app-downloads>
+        <router-outlet #routerOutlet="outlet"></router-outlet>
       </div>
       <!--FIN CONTENIDO-->
       <div class="right columna pl-3">
