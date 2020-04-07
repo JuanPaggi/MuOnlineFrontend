@@ -12,7 +12,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'news',
+        path: '',
         component: NewsComponent,
       },
       {
