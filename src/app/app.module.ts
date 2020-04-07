@@ -12,6 +12,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { ShopComponent } from './shop/shop.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterComponent } from './register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,10 @@ import { RegisterComponent } from './register/register.component';
     RankingComponent,
     ShopComponent,
     ContactComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule
-  ],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

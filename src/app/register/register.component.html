@@ -1,12 +1,24 @@
 <div>
   <p>Registrarse</p>
-  <form>
+  <form [formGroup]="register_form">
+    <div class="form-group">
+      <label for="inputNombre">Nombre</label>
+      <input
+        [(ngModel)]="name"
+        [ngModelOptions]="{ standalone: true }"
+        type="name"
+        class="form-control"
+        aria-describedby="nameHelp"
+        placeholder="Nombre"
+      />
+    </div>
     <div class="form-group">
       <label for="inputEmail">Email</label>
       <input
         type="email"
+        [(ngModel)]="email"
+        [ngModelOptions]="{ standalone: true }"
         class="form-control"
-        id="inputEmail"
         aria-describedby="emailHelp"
         placeholder="Enter email"
       />
@@ -14,9 +26,10 @@
     <div class="form-group">
       <label for="inputUser">Usuario</label>
       <input
+        [(ngModel)]="username"
+        [ngModelOptions]="{ standalone: true }"
         type="username"
         class="form-control"
-        id="inputUser"
         aria-describedby="userHelp"
         placeholder="Nombre de usuario"
       />
@@ -24,27 +37,33 @@
     <div class="form-group">
       <label for="exampleInputPassword1">Contrase&ntilde;a</label>
       <input
+        [(ngModel)]="password1"
+        [ngModelOptions]="{ standalone: true }"
         type="password"
         class="form-control"
-        id="inputPassword1"
         placeholder="Contrase&ntilde;a"
       />
     </div>
     <div class="form-group">
       <label for="inputPassword2">Repetir contrase&ntilde;a</label>
       <input
+        [(ngModel)]="password2"
+        [ngModelOptions]="{ standalone: true }"
         type="password"
         class="form-control"
-        id="inputPassword2"
         placeholder="Repetir contrase&ntilde;a"
       />
     </div>
     <div class="form-check align-items-center">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <input type="checkbox" class="form-check-input" />
       <label class="form-check-label" for="exampleCheck1"
         >Acepto los terminos y condiciones.</label
       >
     </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button (click)="add_user()" type="submit" class="btn btn-primary">
+      Enviar
+    </button>
   </form>
 </div>
+<br />
+<div [innerHTML]="htmladd"></div>

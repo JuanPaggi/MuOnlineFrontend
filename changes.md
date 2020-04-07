@@ -32,3 +32,8 @@
 
 -Diseno componente news(falta logica)
 -Diseno componente descargas(falta link cliente)
+
+# Joaco T - 6/4/2020
+
+-Se agregaron 2 dependencias en appmodels(ReactiveFormModule, FormModule)
+-Se agrego logica al componente REGISTER
