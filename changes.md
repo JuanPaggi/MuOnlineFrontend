@@ -50,3 +50,7 @@
 -Se agrego componente PageNotFound
 -Se soluciono logica de routeo de contenido en componente home
 -Se agrego routeo al componente header
+
+# El negro - 7/4/2020
+
+-Se crearon los dto

@@ -29,7 +29,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShopComponent,
     ContactComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
     PageNotFoundComponent,
     RegisterComponent,
   ],
