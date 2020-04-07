@@ -35,5 +35,6 @@
 
 # Joaco T - 6/4/2020
 
--Se agregaron 2 dependencias en appmodels(ReactiveFormModule, FormModule)
--Se agrego logica al componente REGISTER
+-Se agregaron 3 dependencias en appmodels(ReactiveFormModule, FormModule, HttpClientModule)
+-Se agrego logica y servicio(post) al componente REGISTER
+-Cambio en formulario register

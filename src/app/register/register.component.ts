@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CreateUser } from '../dto/dto_create/CreateUser';
+import { UsersService } from '../services/users/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   htmladd: String;
 
-  constructor() {}
+  constructor(private user_service: UsersService, private router: Router) {}
 
   ngOnInit() {
     this.register_form = new FormGroup({
@@ -36,6 +38,20 @@ export class RegisterComponent implements OnInit {
         user.username = this.username;
         user.email = this.email;
         user.password = this.password1;
+        this.user_service.add_user(user).subscribe(
+          (response) => {
+            console.log(response);
+            this.router.navigateByUrl(`/`);
+          },
+          (err) => {
+            if (err.status === 400) {
+              console.log('Datos incorrectos');
+              console.log(err);
+            }
+            console.log('Datos incorrectos');
+            console.log(err);
+          }
+        );
       } else {
         // Formulario invalido
         this.htmladd =
