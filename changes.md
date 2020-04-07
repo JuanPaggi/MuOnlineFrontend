@@ -33,6 +33,12 @@
 -Diseno componente news(falta logica)
 -Diseno componente descargas(falta link cliente)
 
+# El negro - 6/4/2020
+
+-Se creo el ranking (falta logica)
+-Cambien variables al español
+-Se creo el componente login
+-Cambien variables al españols
 # Joaco T - 6/4/2020
 
 -Se agregaron 3 dependencias en appmodels(ReactiveFormModule, FormModule, HttpClientModule)
@@ -44,3 +50,7 @@
 -Se agrego componente PageNotFound
 -Se soluciono logica de routeo de contenido en componente home
 -Se agrego routeo al componente header
+
+# El negro - 7/4/2020
+
+-Se crearon los dto
