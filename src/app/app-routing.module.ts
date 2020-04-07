@@ -5,6 +5,9 @@ import { NewsComponent } from './news/news.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ContactComponent } from './contact/contact.component';
+import { ShopComponent } from './shop/shop.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -20,8 +23,20 @@ const routes: Routes = [
         component: DownloadsComponent,
       },
       {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
         path: 'ranking',
         component: RankingComponent,
+      },
+      {
+        path: 'shop',
+        component: ShopComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
       },
       {
         path: '**',
