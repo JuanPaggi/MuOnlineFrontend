@@ -1,44 +1,66 @@
-<div class=" text-center">
-    <a class="btn btn-primary mx-1" href="/">DK</a>
-    <a class="btn btn-primary mx-1" href="/">BK</a>
-    <a class="btn btn-primary mx-1" href="/">BM</a>
-    <a class="btn btn-primary mx-1" href="/">ELF</a>
-    <a class="btn btn-primary mx-1" href="/">ME</a>
-    <a class="btn btn-primary mx-1" href="/">HE</a>
-    <a class="btn btn-primary mx-1" href="/">sum</a>
-    <a class="btn btn-primary mx-1" href="/">BS</a>
-    <a class="btn btn-primary mx-1" href="/">DIM</a>
-    <br>
-    <a class="btn btn-primary mx-1 my-1" href="/">DW</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">SM</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">GM</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">DL</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">LE</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">MG</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">DM</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">RF</a>
-    <a class="btn btn-primary mx-1 my-1" href="/">FM</a>
-  </div>
+<div class="text-center my-3">
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(16)">DK</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(17)">BK</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(18)">BM</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(32)">ELF</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(33)">ME</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(34)">HE</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(80)">sum</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(81)">BS</a>
+  <a class="btn btn-primary mx-1" (click)="filtrar_clase(82)">DIM</a>
+  <br />
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(0)">DW</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(1)">SM</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(2)">GM</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(64)">DL</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(65)">LE</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(48)">MG</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(49)">DM</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(96)">RF</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(97)">FM</a>
+</div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">rank</th>
-        <th scope="col">nombre</th>
-        <th scope="col">clase</th>
-        <th scope="col">nivel</th>
-        <th scope="col">reset</th>
-        <th scope="col">pais</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let item of ranking">
-      <tr>
-        <th scope="row"> {{item.rank}} </th>
-        <td>{{item.nombre}}</td>
-        <td>{{item.clase}}</td>
-        <td>{{item.nivel}}</td>
-        <td>{{item.reset}}</td>
-        <td>{{item.pais}}</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">rank</th>
+      <th scope="col">nombre</th>
+      <th scope="col">clase</th>
+      <th scope="col">nivel</th>
+      <th scope="col">reset</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of ranking_show">
+    <tr>
+      <th scope="row">{{ ranking_show.indexOf(item) + 1 }}</th>
+      <td>{{ item.personaje }}</td>
+      <td [ngSwitch]="item.clase">
+        <div *ngSwitchCase="0">WIZ</div>
+        <div *ngSwitchCase="1">SM</div>
+        <div *ngSwitchCase="2">GM</div>
+        <div *ngSwitchCase="16">DK</div>
+        <div *ngSwitchCase="17">BK</div>
+        <div *ngSwitchCase="18">BM</div>
+        <div *ngSwitchCase="32">ELF</div>
+        <div *ngSwitchCase="33">ME</div>
+        <div *ngSwitchCase="34">HE</div>
+        <div *ngSwitchCase="48">MG</div>
+        <div *ngSwitchCase="49">DM</div>
+        <div *ngSwitchCase="64">DL</div>
+        <div *ngSwitchCase="65">LE</div>
+        <div *ngSwitchCase="80">SUM</div>
+        <div *ngSwitchCase="81">BS</div>
+        <div *ngSwitchCase="82">DimM</div>
+        <div *ngSwitchCase="96">RF</div>
+        <div *ngSwitchCase="97">FM</div>
+      </td>
+      <td>{{ item.nroLevel }}</td>
+      <td>{{ item.nroReset }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="my-3 text-center">
+  <button class="btn btn-primary" (click)="reset_filter()">
+    Eliminar filtros
+  </button>
+</div>

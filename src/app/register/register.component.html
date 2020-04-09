@@ -55,12 +55,22 @@
       />
     </div>
     <div class="form-check align-items-center">
-      <input type="checkbox" class="form-check-input" />
-      <label class="form-check-label" for="exampleCheck1"
+      <input
+        [(ngModel)]="terminos"
+        [ngModelOptions]="{ standalone: true }"
+        type="checkbox"
+        class="form-check-input"
+      />
+      <label class="form-check-label" for="Check"
         >Acepto los terminos y condiciones.</label
       >
     </div>
-    <button (click)="add_user()" type="submit" class="btn btn-primary">
+    <button
+      (click)="add_user()"
+      type="submit"
+      class="btn btn-primary"
+      unchecked
+    >
       Enviar
     </button>
   </form>
