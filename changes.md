@@ -39,6 +39,7 @@
 -Cambien variables al español
 -Se creo el componente login
 -Cambien variables al españols
+
 # Joaco T - 6/4/2020
 
 -Se agregaron 3 dependencias en appmodels(ReactiveFormModule, FormModule, HttpClientModule)
@@ -53,4 +54,9 @@
 
 # El negro - 7/4/2020
 
--Se crearon los dto
+-Se crearon los
+
+# Joaco T - 9/4/2020
+
+-Se termino el formulario de registro
+-Creados dto y servicios de Personajes(falta probar)

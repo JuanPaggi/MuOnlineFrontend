@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 // DTOs
 import { CreateUser } from 'src/app/dto/dto_usuarios/CreateUser';
 import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
-import { UsuarioEditDto } from 'src/app/dto/UsuarioEditDto';
+import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 import { UsuarioLoginDto } from 'src/app/dto/dto_usuarios/UsuarioLoginDto';
 
 @Injectable({
