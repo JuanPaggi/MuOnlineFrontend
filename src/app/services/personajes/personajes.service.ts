@@ -13,10 +13,12 @@ import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 export class PersonajesService {
   constructor(private http: HttpClient) {}
 
-  public get_character(body: PersonajeDatosDto): Observable<Response> {
+  public get_character(
+    body: PersonajeDatosDto
+  ): Observable<PersonajeDatosDto[]> {
     let headers = {};
-    return this.http.get<Response>(
-      environment.apiEndpoint + '/personajes/' + body.personaje,
+    return this.http.get<PersonajeDatosDto[]>(
+      environment.apiEndpoint + '/personajes',
       headers
     );
   }

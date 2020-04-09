@@ -60,3 +60,8 @@
 
 -Se termino el formulario de registro
 -Creados dto y servicios de Personajes(falta probar)
+
+# Joaco T - 9/4/2020 -- 2
+
+-Se termino Ranking(logica, filtros)
+-Se arreglo servicio de personajes
