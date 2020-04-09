@@ -3,7 +3,7 @@
     <div class="cuerpo-container">
       <div class="left columna pr-3">
         <div class="login">
-          <app-login></app-login>>
+          <app-login></app-login>
           <div class="dropdown-divider"></div>
           <div>
             <span>Menu</span>
@@ -20,18 +20,6 @@
             </div>
           </div>
           <div class="dropdown-divider"></div>
-
-          <div class="players_rank">
-            <span>Top 10</span>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Jugador1</li>
-              <li class="list-group-item">Jugador2</li>
-              <li class="list-group-item">Jugador3</li>
-              <li class="list-group-item">Jugador4</li>
-              <li class="list-group-item">Jugador5</li>
-              <li class="list-group-item">Jugador6</li>
-            </ul>
-          </div>
         </div>
       </div>
       <!-- CONTENIDO -->
@@ -48,6 +36,16 @@
             <li class="list-group-item">Server 3: status</li>
           </ul>
         </div>
+        <div class="dropdown-divider"></div>
+        <div class="players_rank">
+          <span>Top 10</span>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let item of ranking" class="list-group-item py-1">
+              {{ item.personaje }}
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown-divider"></div>
         <div class="guild_rank">
           <span>Guild ranking</span>
           <ul class="list-group list-group-flush">

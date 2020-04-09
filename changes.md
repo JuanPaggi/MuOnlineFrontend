@@ -65,3 +65,7 @@
 
 -Se termino Ranking(logica, filtros)
 -Se arreglo servicio de personajes
+
+# Joaco T - 9/4/2020 -- 3
+
+-Se agrego el top 10 ranking al componente Home
