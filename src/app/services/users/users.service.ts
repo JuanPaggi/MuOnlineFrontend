@@ -68,7 +68,17 @@ export class UsersService {
     );
   }
 
-  public edit_password() {}
+  public edit_password(
+    body: UsuarioEditDto,
+    uid: number
+  ): Observable<Response> {
+    let headers = {};
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/usuarios/clave/' + uid,
+      body,
+      headers
+    );
+  }
 
   setUserLoggedIn(user: User) {
     this.isUserLoggedIn = true;

@@ -48,6 +48,11 @@
           <ul class="list-group list-group-flush">
             <li *ngFor="let item of ranking" class="list-group-item py-1">
               {{ item.personaje }}
+              <small
+                ><strong
+                  >{{ item.nroLevel }}({{ item.nroReset }})</strong
+                ></small
+              >
             </li>
           </ul>
         </div>

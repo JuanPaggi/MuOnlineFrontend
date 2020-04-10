@@ -39,21 +39,21 @@ export class ChangeNameComponent implements OnInit {
   }
 
   change_name() {
-    if (this.password == this.Usuario.clave) {
-      let dato = new UsuarioEditDto();
-      dato.dato = this.new_name;
-      this.usuariosSrv.edit_name(dato, this.Usuario.idUsuario).subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (err) => {
-          console.log('Error!!');
-          console.log(err);
+    let dato = new UsuarioEditDto();
+    dato.dato = this.new_name;
+    dato.dato2 = this.password;
+    this.usuariosSrv.edit_name(dato, this.Usuario.idUsuario).subscribe(
+      (response) => {
+        this.htmlAdd =
+          '<div class="alert alert-success">Nombre cambiado correctamente.</div>';
+      },
+      (err) => {
+        console.log(err);
+        if (err.status == 403) {
+          this.htmlAdd =
+            '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
         }
-      );
-    } else {
-      this.htmlAdd =
-        '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
-    }
+      }
+    );
   }
 }
