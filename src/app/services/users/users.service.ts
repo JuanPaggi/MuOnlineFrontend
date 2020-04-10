@@ -80,6 +80,14 @@ export class UsersService {
     );
   }
 
+  public users_online(): Observable<any> {
+    let headers = {};
+    return this.http.get(
+      environment.apiEndpoint + '/estado/jugadores',
+      headers
+    );
+  }
+
   setUserLoggedIn(user: User) {
     this.isUserLoggedIn = true;
     this.usserLogged = user;

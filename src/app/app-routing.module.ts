@@ -5,7 +5,6 @@ import { NewsComponent } from './news/news.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ContactComponent } from './contact/contact.component';
 import { ShopComponent } from './shop/shop.component';
 import { RegisterComponent } from './register/register.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
@@ -39,10 +38,6 @@ const routes: Routes = [
       {
         path: 'shop',
         component: ShopComponent,
-      },
-      {
-        path: 'contact',
-        component: ContactComponent,
       },
       {
         path: 'user',
