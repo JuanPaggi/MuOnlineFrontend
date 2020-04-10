@@ -1,51 +1,52 @@
-    <div *ngIf="!user">
-        <span>Iniciar sesion</span>
-        <div class="menu">
-          <form>
-            <div class="form-group">
-              <input
-                type="username"
-                class="form-control"
-                [(ngModel)]="usuario"
-                [ngModelOptions]="{standalone: true}"
-                placeholder="Usuario"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                [(ngModel)]="clave"
-                [ngModelOptions]="{standalone: true}"
-                placeholder="Password"
-              />
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-              />
-              <label class="form-check-label" for="Check">
-                Recordarme
-              </label>
-            </div>
-            <button (click)="ComprobarUsuario()" type="submit" class="btn btn-secondary">Entrar</button>
-          </form>
-          <a class="text-center" href="#">Olvidaste contrase&ntilde;a</a>
-        </div>
-        <div class="error-login" [innerHtml]="htmlToAdd"></div>
-    </div>
-    <div *ngIf="user">
-      <span>Panel de Control</span><br><br>
-      <div><strong>{{usuario}}</strong></div>
-      <div class="list-group list-group-flush">
-            <a class="list-group-item" href="/">Mi Cuenta</a>
-            <a class="list-group-item" href="/">Resetear Personaje</a>
-            <a class="list-group-item" href="/">Destrabar Personaje</a>
-            <a class="list-group-item" href="/">Tienda</a>
-            <a class="list-group-item" href="/">Arreglar Puntos</a>
-            <button (click)="clickedSalir()" class="list-group-item">Salir</button>
-          </div>
-    </div>
-
-
+<div *ngIf="!user">
+  <span>Iniciar sesion</span>
+  <div class="menu">
+    <form>
+      <div class="form-group">
+        <input
+          type="username"
+          class="form-control"
+          [(ngModel)]="usuario"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Usuario"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          [(ngModel)]="clave"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Password"
+        />
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" />
+        <label class="form-check-label" for="Check">
+          Recordarme
+        </label>
+      </div>
+      <button
+        (click)="ComprobarUsuario()"
+        type="submit"
+        class="btn btn-secondary"
+      >
+        Entrar
+      </button>
+    </form>
+    <a class="text-center" href="#">Olvidaste contrase&ntilde;a</a>
+  </div>
+  <div class="error-login" [innerHtml]="htmlToAdd"></div>
+</div>
+<div *ngIf="user">
+  <span>Panel de Control</span><br /><br />
+  <div>
+    <strong>{{ usuario }}</strong>
+  </div>
+  <div class="list-group list-group-flush">
+    <a class="list-group-item" routerLink="/user">Mi Cuenta</a>
+    <a class="list-group-item" routerLink="/user/personajes">Personajes</a>
+    <a class="list-group-item" href="/user/shop">Tienda</a>
+    <button (click)="clickedSalir()" class="list-group-item">Salir</button>
+  </div>
+</div>

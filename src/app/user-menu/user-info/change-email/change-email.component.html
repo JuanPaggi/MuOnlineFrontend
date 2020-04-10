@@ -1,0 +1,26 @@
+<div>
+  <form [formGroup]="change_email_form">
+    <div class="form-group">
+      <label for="inputEmail">Nuevo email:</label>
+      <input
+        [(ngModel)]="new_email"
+        [ngModelOptions]="{ standalone: true }"
+        type="email"
+        class="form-control"
+        placeholder="{{ Usuario.email }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Contrase&ntilde;a:</label>
+      <input
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+        type="password"
+        class="form-control"
+      />
+    </div>
+    <div [innerHTML]="htmlAdd" class="my-2"></div>
+
+    <button (click)="change_email()" class="btn btn-primary">Cambiar</button>
+  </form>
+</div>

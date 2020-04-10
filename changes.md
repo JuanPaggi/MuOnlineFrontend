@@ -73,3 +73,8 @@
 # Juan Paggi - 9/4/2020
 
 -Se creo la sesion del usuario Entrar/salir
+
+# Joaco T - 10/4/2020
+
+-Se creo todo el manejo de usuario logeado(Cambiar nombre, email y password)
+-Se empezo con el componente 'Personajes' del usuario logeado

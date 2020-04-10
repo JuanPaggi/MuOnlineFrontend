@@ -10,17 +10,14 @@ import { UsersService } from '../services/users/users.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  
   ranking: PersonajeDatosDto[];
 
   user: User;
 
   constructor(
-      private pj_service: PersonajesService,
-      private usuariosSrv: UsersService,
-      ) {
-    
-  }
+    private pj_service: PersonajesService,
+    private usuariosSrv: UsersService
+  ) {}
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
@@ -35,7 +32,6 @@ export class HomeComponent implements OnInit {
         while (this.ranking.length > 10) {
           this.ranking.pop();
         }
-        console.log(this.ranking);
       });
   }
 }

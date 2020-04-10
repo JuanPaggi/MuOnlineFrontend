@@ -1,0 +1,43 @@
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">Num</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Clase</th>
+      <th scope="col">Nivel</th>
+      <th scope="col">Reset</th>
+      <th scope="col">Destrabar</th>
+      <th scope="col">R. Puntos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>SAKURITA</td>
+      <td [ngSwitch]="32">
+        <div *ngSwitchCase="0">WIZ</div>
+        <div *ngSwitchCase="1">SM</div>
+        <div *ngSwitchCase="2">GM</div>
+        <div *ngSwitchCase="16">DK</div>
+        <div *ngSwitchCase="17">BK</div>
+        <div *ngSwitchCase="18">BM</div>
+        <div *ngSwitchCase="32">ELF</div>
+        <div *ngSwitchCase="33">ME</div>
+        <div *ngSwitchCase="34">HE</div>
+        <div *ngSwitchCase="48">MG</div>
+        <div *ngSwitchCase="49">DM</div>
+        <div *ngSwitchCase="64">DL</div>
+        <div *ngSwitchCase="65">LE</div>
+        <div *ngSwitchCase="80">SUM</div>
+        <div *ngSwitchCase="81">BS</div>
+        <div *ngSwitchCase="82">DimM</div>
+        <div *ngSwitchCase="96">RF</div>
+        <div *ngSwitchCase="97">FM</div>
+      </td>
+      <td>400</td>
+      <td>3</td>
+      <td><button class="btn btn-secondary py-0 my-0">X</button></td>
+      <td><button class="btn btn-secondary py-0 my-0">X</button></td>
+    </tr>
+  </tbody>
+</table>
