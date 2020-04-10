@@ -37,9 +37,19 @@
         <div class="server_stats">
           <span>Servidor</span>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Server 1: status</li>
-            <li class="list-group-item">Server 2: status</li>
-            <li class="list-group-item">Server 3: status</li>
+            <li class="list-group-item py-1">
+              Server 1:
+              <div *ngIf="online; else elseBlock">
+                <strong class="text-success">online</strong>
+              </div>
+              <ng-template #elseBlock
+                ><strong class="text-danger">offline</strong></ng-template
+              >
+            </li>
+            <li class="list-group-item py-1">
+              Usuarios online:<br />
+              <strong class="text-success">{{ onlineUs }}</strong>
+            </li>
           </ul>
         </div>
         <div class="dropdown-divider"></div>
