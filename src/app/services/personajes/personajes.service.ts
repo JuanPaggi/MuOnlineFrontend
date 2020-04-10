@@ -23,6 +23,17 @@ export class PersonajesService {
     );
   }
 
+  public get_character_by_user(
+    body: PersonajeDatosDto,
+    uid: number
+  ): Observable<PersonajeDatosDto[]> {
+    let headers = {};
+    return this.http.get<PersonajeDatosDto[]>(
+      environment.apiEndpoint + '/personajes/' + uid,
+      headers
+    );
+  }
+
   public reset_points(body: UsuarioEditDto, uid: number): Observable<Response> {
     return this.http.put<Response>(
       environment.apiEndpoint + '/personajes/reiniciarPuntos/' + uid,

@@ -4,6 +4,7 @@ import { User } from 'src/app/dto/user.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
+import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 
 @Component({
   selector: 'app-change-password',
@@ -43,12 +44,21 @@ export class ChangePasswordComponent implements OnInit {
       this.htmlAdd =
         '<div class="alert alert-danger">Las contrase&ntilde;as nos coinciden.</div>';
     } else {
-      if (this.password != this.Usuario.clave) {
-        this.htmlAdd =
-          '<div class="alert alert-danger">Contrase&ntilde;a actual no es correcta.</div>';
-      } else {
-        //Llamada al back para cambiar pass
-      }
+      let dato = new UsuarioEditDto();
+      dato.dato = this.password;
+      dato.dato2 = this.new_pass1;
+      this.usuariosSrv.edit_password(dato, this.user.id_usuario).subscribe(
+        (response) => {
+          this.htmlAdd =
+            '<div class="alert alert-success">Contrase&ntilde;a cambiada correctamente.</div>';
+        },
+        (err) => {
+          if (err.status == 403) {
+            this.htmlAdd =
+              '<div class="alert alert-danger">Contrase&ntilde;a actual incorrecta.</div>';
+          }
+        }
+      );
     }
   }
 }

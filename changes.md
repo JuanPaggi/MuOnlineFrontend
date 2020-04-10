@@ -78,3 +78,11 @@
 
 -Se creo todo el manejo de usuario logeado(Cambiar nombre, email y password)
 -Se empezo con el componente 'Personajes' del usuario logeado
+
+# Joaco T - 10/4/2020
+
+-Actualizadas:
+\_dtos: UsuarioDatosDto, UsuarioEditDto
+\_home: html
+\_services: users, personajes
+\_user-menu: personajes, user-info(change-name, change-email, change-password)

@@ -10,11 +10,11 @@
       <th scope="col">R. Puntos</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor="let item of personajes">
     <tr>
-      <th scope="row">1</th>
-      <td>SAKURITA</td>
-      <td [ngSwitch]="32">
+      <th scope="row">{{ personajes.indexOf(item) + 1 }}</th>
+      <td>{{ item.personaje }}</td>
+      <td [ngSwitch]="item.clase">
         <div *ngSwitchCase="0">WIZ</div>
         <div *ngSwitchCase="1">SM</div>
         <div *ngSwitchCase="2">GM</div>
@@ -34,10 +34,18 @@
         <div *ngSwitchCase="96">RF</div>
         <div *ngSwitchCase="97">FM</div>
       </td>
-      <td>400</td>
-      <td>3</td>
+      <td>{{ item.nroLevel }}</td>
+      <td>{{ item.nroReset }}</td>
       <td><button class="btn btn-secondary py-0 my-0">X</button></td>
-      <td><button class="btn btn-secondary py-0 my-0">X</button></td>
+      <td>
+        <button
+          (click)="reset_points(item.personaje)"
+          class="btn btn-secondary py-0 my-0"
+        >
+          X
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
+<div class="my-1" [innerHTML]="htmlAdd"></div>
