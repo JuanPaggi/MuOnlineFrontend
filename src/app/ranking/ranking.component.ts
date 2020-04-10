@@ -26,7 +26,6 @@ export class RankingComponent implements OnInit {
       .subscribe((response) => {
         this.ranking = response;
         this.ranking_show = this.ranking;
-        console.log(response);
       });
   }
 
