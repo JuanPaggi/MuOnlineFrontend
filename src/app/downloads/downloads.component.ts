@@ -12,4 +12,8 @@ export class DownloadsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  linkDescarga(){
+    window.location.href = "https://drive.google.com/file/d/1vzlg88Alx031IOOA5fJOhOngJvdVhZEt/view";
+  }
+
 }

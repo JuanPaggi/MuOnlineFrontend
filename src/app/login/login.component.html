@@ -1,5 +1,4 @@
-<div [ngSwitch]='ingreso'>
-    <div *ngSwitchCase="false">
+    <div *ngIf="!user">
         <span>Iniciar sesion</span>
         <div class="menu">
           <form>
@@ -7,6 +6,8 @@
               <input
                 type="username"
                 class="form-control"
+                [(ngModel)]="usuario"
+                [ngModelOptions]="{standalone: true}"
                 placeholder="Usuario"
               />
             </div>
@@ -14,7 +15,8 @@
               <input
                 type="password"
                 class="form-control"
-                id="exampleDropdownFormPassword1"
+                [(ngModel)]="clave"
+                [ngModelOptions]="{standalone: true}"
                 placeholder="Password"
               />
             </div>
@@ -22,28 +24,28 @@
               <input
                 type="checkbox"
                 class="form-check-input"
-                id="dropdownCheck"
               />
               <label class="form-check-label" for="Check">
                 Recordarme
               </label>
             </div>
-            <button (click)="entro()" type="submit" class="btn btn-secondary">Entrar</button>
+            <button (click)="ComprobarUsuario()" type="submit" class="btn btn-secondary">Entrar</button>
           </form>
           <a class="text-center" href="#">Olvidaste contrase&ntilde;a</a>
-        </div>   
+        </div>
+        <div class="error-login" [innerHtml]="htmlToAdd"></div>
     </div>
-    <div *ngSwitchCase="true">
-        <span>Panel de Control</span>
-        <div class="list-group list-group-flush">
+    <div *ngIf="user">
+      <span>Panel de Control</span><br><br>
+      <div><strong>{{usuario}}</strong></div>
+      <div class="list-group list-group-flush">
             <a class="list-group-item" href="/">Mi Cuenta</a>
             <a class="list-group-item" href="/">Resetear Personaje</a>
             <a class="list-group-item" href="/">Destrabar Personaje</a>
             <a class="list-group-item" href="/">Tienda</a>
             <a class="list-group-item" href="/">Arreglar Puntos</a>
-            <button (click)="salio()" class="list-group-item">Salir</button>
+            <button (click)="clickedSalir()" class="list-group-item">Salir</button>
           </div>
     </div>
-</div>
 
 

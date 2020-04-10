@@ -69,3 +69,7 @@
 # Joaco T - 9/4/2020 -- 3
 
 -Se agrego el top 10 ranking al componente Home
+
+# Juan Paggi - 9/4/2020
+
+-Se creo la sesion del usuario Entrar/salir
