@@ -1,3 +1,9 @@
-.error-login{
-    color: red;
+.error-login {
+  color: red;
+}
+
+span {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
 }
