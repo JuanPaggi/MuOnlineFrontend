@@ -1,0 +1,9 @@
+<div class="container ml-1">
+  <p>Bienvenido, {{ user.username }}!</p>
+  <ul>
+    <li><a routerLink="/user/editname">Cambiar nombre</a></li>
+    <li><a routerLink="/user/editemail">Cambiar email</a></li>
+    <li><a routerLink="/user/changepass">Cambiar contrase&ntilde;a</a></li>
+  </ul>
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>

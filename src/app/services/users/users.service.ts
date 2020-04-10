@@ -15,9 +15,8 @@ import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
   providedIn: 'root',
 })
 export class UsersService {
-
   private isUserLoggedIn: boolean;
-  public usserLogged:User;
+  public usserLogged: User;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -47,7 +46,7 @@ export class UsersService {
 
   public edit_name(
     body: UsuarioEditDto,
-    id_user: String
+    id_user: number
   ): Observable<Response> {
     let headers = {};
     return this.http.put<Response>(
@@ -59,7 +58,7 @@ export class UsersService {
 
   public edit_email(
     body: UsuarioEditDto,
-    id_user: String
+    id_user: number
   ): Observable<Response> {
     let headers = {};
     return this.http.put<Response>(
@@ -69,7 +68,9 @@ export class UsersService {
     );
   }
 
-  setUserLoggedIn(user:User) {
+  public edit_password() {}
+
+  setUserLoggedIn(user: User) {
     this.isUserLoggedIn = true;
     this.usserLogged = user;
     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -78,11 +79,11 @@ export class UsersService {
   setUserLoggedOut() {
     this.isUserLoggedIn = false;
     this.usserLogged = null;
-    console.log("we");
+    console.log('we');
     localStorage.setItem('currentUser', JSON.stringify(null));
   }
 
   getUserLoggedIn() {
-  	return JSON.parse(localStorage.getItem('currentUser'));
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 }
