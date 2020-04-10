@@ -8,12 +8,20 @@ import { CreateUser } from 'src/app/dto/dto_usuarios/CreateUser';
 import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 import { UsuarioLoginDto } from 'src/app/dto/dto_usuarios/UsuarioLoginDto';
+import { User } from 'src/app/dto/user.model';
+import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+
+  private isUserLoggedIn: boolean;
+  public usserLogged:User;
+
+  constructor(private http: HttpClient) {
+    this.isUserLoggedIn = false;
+  }
 
   public add_user(body: CreateUser): Observable<Response> {
     return this.http.post<Response>(
@@ -22,10 +30,10 @@ export class UsersService {
     );
   }
 
-  public get_user(body: UsuarioDatosDto): Observable<Response> {
+  public get_user(body: UsuarioByIdDto): Observable<UsuarioDatosDto> {
     let headers = {};
-    return this.http.get<Response>(
-      environment.apiEndpoint + '/usuarios/' + body.idUsuario,
+    return this.http.get<UsuarioDatosDto>(
+      environment.apiEndpoint + '/usuarios/' + body.id_usuario,
       headers
     );
   }
@@ -59,5 +67,22 @@ export class UsersService {
       body,
       headers
     );
+  }
+
+  setUserLoggedIn(user:User) {
+    this.isUserLoggedIn = true;
+    this.usserLogged = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  setUserLoggedOut() {
+    this.isUserLoggedIn = false;
+    this.usserLogged = null;
+    console.log("we");
+    localStorage.setItem('currentUser', JSON.stringify(null));
+  }
+
+  getUserLoggedIn() {
+  	return JSON.parse(localStorage.getItem('currentUser'));
   }
 }

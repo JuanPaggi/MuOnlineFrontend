@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonajeDatosDto } from '../dto/dto_pj/PersonajeDatosDto';
 import { PersonajesService } from '../services/personajes/personajes.service';
+import { User } from '../dto/user.model';
+import { UsersService } from '../services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +10,20 @@ import { PersonajesService } from '../services/personajes/personajes.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  
   ranking: PersonajeDatosDto[];
 
-  constructor(private pj_service: PersonajesService) {}
+  user: User;
+
+  constructor(
+      private pj_service: PersonajesService,
+      private usuariosSrv: UsersService,
+      ) {
+    
+  }
 
   ngOnInit(): void {
+    this.user = this.usuariosSrv.getUserLoggedIn();
     this.load_ranking();
   }
 
