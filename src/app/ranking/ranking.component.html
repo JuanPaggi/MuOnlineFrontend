@@ -59,8 +59,30 @@
     </tr>
   </tbody>
 </table>
-<div class="my-3 text-center">
-  <button class="btn btn-primary" (click)="reset_filter()">
-    Eliminar filtros
-  </button>
+<div class="container text-center mb-5">
+  <div class="row">
+    <div class="col">
+      <button
+        *ngIf="btn_anterior"
+        class="btn btn-primary"
+        (click)="filtrar_pagina(1)"
+      >
+        Anterior
+      </button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="reset_filter()">
+        Eliminar filtros
+      </button>
+    </div>
+    <div class="col">
+      <button
+        *ngIf="btn_siguiente"
+        class="btn btn-primary"
+        (click)="filtrar_pagina(2)"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
 </div>

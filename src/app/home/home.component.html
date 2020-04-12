@@ -72,11 +72,15 @@
         <div class="guild_rank">
           <span>Guild ranking</span>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item bgnone">Guild 1</li>
-            <li class="list-group-item bgnone">Guild 2</li>
-            <li class="list-group-item bgnone">Guild 3</li>
-            <li class="list-group-item bgnone">Guild 4</li>
-            <li class="list-group-item bgnone">Guild 5</li>
+            <li
+              *ngFor="let item of ranking_guild"
+              class="list-group-item bgnone py-1"
+            >
+              {{ item.nombre }}
+              <small
+                ><strong>{{ item.puntos }}</strong></small
+              >
+            </li>
           </ul>
         </div>
       </div>
