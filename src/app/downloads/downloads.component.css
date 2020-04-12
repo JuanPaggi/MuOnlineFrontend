@@ -1,0 +1,8 @@
+.boton-descarga{
+    width: 50%;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
