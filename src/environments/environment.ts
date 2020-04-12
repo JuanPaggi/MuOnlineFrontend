@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: '',
+  apiEndpoint: 'http://munewage.com.ar:7676/',
 };
 
 /*

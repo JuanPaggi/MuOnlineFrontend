@@ -13,7 +13,7 @@ export class DownloadsComponent implements OnInit {
   }
 
   linkDescarga(){
-    window.location.href = "https://drive.google.com/file/d/1vzlg88Alx031IOOA5fJOhOngJvdVhZEt/view";
+    window.location.href = "https://drive.google.com/open?id=1TPwo9zrhbQKPYeh2Vn6AdO4rdvO9TlSy";
   }
 
 }
