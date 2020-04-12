@@ -17,19 +17,19 @@
           class="form-control"
           [(ngModel)]="clave"
           [ngModelOptions]="{ standalone: true }"
-          placeholder="Password"
+          placeholder="Clave"
         />
       </div>
-      <div class="form-check">
+      <div class="form-check mb-2">
         <input type="checkbox" class="form-check-input" />
         <label class="form-check-label" for="Check">
           Recordarme
         </label>
       </div>
-      <button
+      <button 
         (click)="ComprobarUsuario()"
         type="submit"
-        class="btn btn-secondary"
+        class="mb-2 btn btn-secondary"
       >
         Entrar
       </button>
