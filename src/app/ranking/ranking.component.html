@@ -32,7 +32,7 @@
   </thead>
   <tbody *ngFor="let item of ranking_show">
     <tr>
-      <th scope="row">{{ ranking_show.indexOf(item) + 1 }}</th>
+      <th scope="row">{{ ranking_show.indexOf(item) + 1 + pagina }}</th>
       <td>{{ item.personaje }}</td>
       <td [ngSwitch]="item.clase">
         <div *ngSwitchCase="0">WIZ</div>
