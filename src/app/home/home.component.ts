@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonajeDatosDto } from '../dto/dto_pj/PersonajeDatosDto';
 import { PersonajesService } from '../services/personajes/personajes.service';
 import { User } from '../dto/user.model';
 import { UsersService } from '../services/users/users.service';
 import { SvStatusService } from '../services/sv_status/sv-status.service';
+import { PersonajeDatosDto } from '../dto/dto_pj/PersonajeDatosDto';
+import { GuildDatoDto } from '../dto/dto_guild/GuildDatoDto';
+import { GuildService } from '../services/guild/guild.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,8 @@ import { SvStatusService } from '../services/sv_status/sv-status.service';
 })
 export class HomeComponent implements OnInit {
   ranking: PersonajeDatosDto[];
+
+  ranking_guild: GuildDatoDto[];
 
   user: User;
 
@@ -22,12 +26,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private pj_service: PersonajesService,
     private usuariosSrv: UsersService,
-    private server: SvStatusService
+    private server: SvStatusService,
+    private guildSrv: GuildService
   ) {}
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.load_ranking();
+    this.load_ranking_guild();
     this.usuariosSrv.users_online().subscribe((response) => {
       this.onlineUs = response;
     });
@@ -45,5 +51,11 @@ export class HomeComponent implements OnInit {
           this.ranking.pop();
         }
       });
+  }
+
+  private load_ranking_guild() {
+    this.guildSrv.get_guilds(new GuildDatoDto()).subscribe((response) => {
+      this.ranking_guild = response;
+    });
   }
 }

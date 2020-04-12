@@ -93,3 +93,10 @@
 -Componente home actualizado: Server status, Usrs online
 -Servicio usuarios actualizado
 -Servicio sv-status creado
+
+# Joaco t 12/4/2020
+
+-commit 1
+--Estilo general de la web, imagen de fondo, header
+-commit 2
+--Paginado del ranking y Rank guild
