@@ -13,14 +13,14 @@
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(1)">SM</a>
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(2)">GM</a>
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(64)">DL</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(65)">LE</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(66)">LE</a>
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(48)">MG</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(49)">DM</a>
+  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(50)">DM</a>
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(96)">RF</a>
   <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(97)">FM</a>
 </div>
 
-<table class="table text-center">
+<table class="table table-sm text-center">
   <thead>
     <tr>
       <th scope="col">rank</th>
@@ -45,9 +45,9 @@
         <div *ngSwitchCase="33">ME</div>
         <div *ngSwitchCase="34">HE</div>
         <div *ngSwitchCase="48">MG</div>
-        <div *ngSwitchCase="49">DM</div>
+        <div *ngSwitchCase="50">DM</div>
         <div *ngSwitchCase="64">DL</div>
-        <div *ngSwitchCase="65">LE</div>
+        <div *ngSwitchCase="66">LE</div>
         <div *ngSwitchCase="80">SUM</div>
         <div *ngSwitchCase="81">BS</div>
         <div *ngSwitchCase="82">DimM</div>

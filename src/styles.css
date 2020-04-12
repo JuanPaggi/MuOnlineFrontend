@@ -3,4 +3,18 @@
 }
 body {
   margin: 0;
+  background-image: url(./assets/images/background.jpg);
+  background-size: auto;
+  background-attachment: fixed;
+}
+a {
+  color: rgb(146, 0, 0);
+}
+
+a:hover {
+  color: rgb(146, 0, 0);
+}
+
+.bgnone {
+  background: transparent;
 }
