@@ -14,7 +14,7 @@ export class RankingComponent implements OnInit {
 
   public btn_siguiente: boolean;
   public btn_anterior: boolean;
-  private show_btn: number;
+  public show_btn: number;
 
   private pagina: number;
 
