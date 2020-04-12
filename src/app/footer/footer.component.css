@@ -1,12 +1,11 @@
-.footer{
-    width: 100%;
-    height: auto;
-    background:linear-gradient(to bottom, #2B2B2B 5%, #1a1a1a 100%);
-    display: flex;
-    justify-content: center;
-    
+.footer {
+  width: 100%;
+  height: auto;
+  background: black;
+  display: flex;
+  justify-content: center;
 }
 
-p{
-    color: white;
+p {
+  color: white;
 }
