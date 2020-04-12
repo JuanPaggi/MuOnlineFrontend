@@ -16,7 +16,7 @@ export class RankingComponent implements OnInit {
   public btn_anterior: boolean;
   public show_btn: number;
 
-  private pagina: number;
+  public pagina: number;
 
   constructor(private pj_service: PersonajesService) {
     this.ranking_show = [];
