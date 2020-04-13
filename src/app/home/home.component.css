@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.container {
+.contenedor {
   width: 1024px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 8px 8px 0px 0px;
@@ -14,8 +14,9 @@
 /* ----- CUERPO ----- */
 
 .cuerpo-container {
+  padding: 0 15px;
   display: grid;
-  height: 100%;
+  height: auto;
   grid-template-columns: 20% 60% 20%;
   grid-template-areas: "left center right";
 }
