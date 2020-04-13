@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
             window.location.href = '/';
           });
       } else {
-        this.htmlToAdd = '<p>Datos Incorrectos<p>';
+        this.htmlToAdd = '<p class="text-danger">Datos Incorrectos<p>';
       }
     });
   }

@@ -12,12 +12,17 @@ export class UserMenuComponent implements OnInit {
 
   usuario: String;
 
-  constructor(private usuariosSrv: UsersService) {}
+  logged: boolean;
+
+  constructor(private usuariosSrv: UsersService) {
+    this.logged = false;
+  }
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     if (this.user) {
       this.usuario = this.user.username;
+      this.logged = true;
     }
   }
 }

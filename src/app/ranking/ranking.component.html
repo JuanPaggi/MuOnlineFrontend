@@ -1,26 +1,22 @@
-<div class="text-center my-3">
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(16)">DK</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(17)">BK</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(18)">BM</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(32)">ELF</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(33)">ME</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(34)">HE</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(80)">sum</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(81)">BS</a>
-  <a class="btn btn-primary mx-1" (click)="filtrar_clase(82)">DIM</a>
-  <br />
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(0)">DW</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(1)">SM</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(2)">GM</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(64)">DL</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(66)">LE</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(48)">MG</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(50)">DM</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(96)">RF</a>
-  <a class="btn btn-primary mx-1 my-1" (click)="filtrar_clase(97)">FM</a>
+<div class="my-3 text-center">
+  <span>Ranking</span>
 </div>
+<div class="alert alert-custom d-flex justify-content-around py-1 mb-0">
+  <button class="btn btn-custom" (click)="filtrar_clase(0)">DW</button>
 
-<table class="table table-sm text-center">
+  <button class="btn btn-custom" (click)="filtrar_clase(16)">DK</button>
+
+  <button class="btn btn-custom" (click)="filtrar_clase(32)">ELF</button>
+
+  <button class="btn btn-custom" (click)="filtrar_clase(48)">MG</button>
+
+  <button class="btn btn-custom" (click)="filtrar_clase(64)">DL</button>
+
+  <button class="btn btn-custom" (click)="filtrar_clase(80)">SUM</button>
+
+  <button class="btn btn-custom" (click)="filtrar_clase(96)">RF</button>
+</div>
+<table class="table table-sm text-center pt-0 mt-0">
   <thead>
     <tr>
       <th scope="col">rank</th>
@@ -71,7 +67,11 @@
       </button>
     </div>
     <div class="col">
-      <button class="btn btn-primary" (click)="reset_filter()">
+      <button
+        *ngIf="btn_filter"
+        class="btn btn-primary"
+        (click)="reset_filter()"
+      >
         Eliminar filtros
       </button>
     </div>

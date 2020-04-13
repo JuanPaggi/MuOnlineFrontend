@@ -100,3 +100,11 @@
 --Estilo general de la web, imagen de fondo, header
 -commit 2
 --Paginado del ranking y Rank guild
+
+# Joaco T 13/4/2020
+
+-Mostrar navegacion de usuario solo si esta loggeado.
+-Registro: rediseno del formulario, manejo de errores.
+-Downloads: cambio minimo en estilo, cliente subido a mediafire y mega.
+-Ranking: cambio en el filtrado, mostrar boton 'borrar filtro' solo si antes se aplico uno y cambio minimo de estilo.
+-Home: lineas divisoras blancas eliminadas de las columnas laterales.

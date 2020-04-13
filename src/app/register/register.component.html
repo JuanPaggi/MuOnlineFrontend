@@ -1,79 +1,96 @@
-<div>
-  <p>Registrarse</p>
-  <form [formGroup]="register_form">
-    <div class="form-group">
-      <label for="inputNombre">Nombre</label>
-      <input
-        [(ngModel)]="name"
-        [ngModelOptions]="{ standalone: true }"
-        type="name"
-        class="form-control"
-        aria-describedby="nameHelp"
-        placeholder="Nombre"
-      />
-    </div>
-    <div class="form-group">
-      <label for="inputEmail">Email</label>
-      <input
-        type="email"
-        [(ngModel)]="email"
-        [ngModelOptions]="{ standalone: true }"
-        class="form-control"
-        aria-describedby="emailHelp"
-        placeholder="Enter email"
-      />
-    </div>
-    <div class="form-group">
-      <label for="inputUser">Usuario</label>
-      <input
-        [(ngModel)]="username"
-        [ngModelOptions]="{ standalone: true }"
-        type="username"
-        class="form-control"
-        aria-describedby="userHelp"
-        placeholder="Nombre de usuario"
-      />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Contrase&ntilde;a</label>
-      <input
-        [(ngModel)]="password1"
-        [ngModelOptions]="{ standalone: true }"
-        type="password"
-        class="form-control"
-        placeholder="Contrase&ntilde;a"
-      />
-    </div>
-    <div class="form-group">
-      <label for="inputPassword2">Repetir contrase&ntilde;a</label>
-      <input
-        [(ngModel)]="password2"
-        [ngModelOptions]="{ standalone: true }"
-        type="password"
-        class="form-control"
-        placeholder="Repetir contrase&ntilde;a"
-      />
-    </div>
-    <div class="form-check align-items-center">
-      <input
-        [(ngModel)]="terminos"
-        [ngModelOptions]="{ standalone: true }"
-        type="checkbox"
-        class="form-check-input"
-      />
-      <label class="form-check-label" for="Check"
-        >Acepto los terminos y condiciones.</label
-      >
-    </div>
-    <button
-      (click)="add_user()"
-      type="submit"
-      class="btn btn-primary"
-      unchecked
-    >
-      Enviar
-    </button>
-  </form>
+<div *ngIf="logged" class="contenedor mt-3">
+  <span>Registrarse</span>
+  <div>
+    <form [formGroup]="register_form" class="mt-4">
+      <div class="form-group row my-3">
+        <div class="form-group col my-0">
+          <label for="inputNombre">Nombre</label>
+          <input
+            [(ngModel)]="name"
+            [ngModelOptions]="{ standalone: true }"
+            type="name"
+            class="form-control"
+            aria-describedby="nameHelp"
+            placeholder="Nombre"
+          />
+        </div>
+
+        <div class="form-group col my-0">
+          <label for="inputUser"
+            >Usuario
+            <small class="text-danger">*Maximo 9 caracteres</small></label
+          >
+          <input
+            [(ngModel)]="username"
+            [ngModelOptions]="{ standalone: true }"
+            type="username"
+            class="form-control"
+            aria-describedby="userHelp"
+            placeholder="Nombre de usuario"
+          />
+        </div>
+      </div>
+      <div class="form-group my-0">
+        <label for="inputEmail">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+      </div>
+      <div class="form-group row my-3">
+        <div class="form-group col">
+          <label for="exampleInputPassword1"
+            >Contrase&ntilde;a
+            <small class="text-danger">*Maximo 9 caracteres</small></label
+          >
+          <input
+            [(ngModel)]="password1"
+            [ngModelOptions]="{ standalone: true }"
+            type="password"
+            class="form-control"
+            placeholder="Contrase&ntilde;a"
+          />
+        </div>
+
+        <div class="form-group col">
+          <label for="inputPassword2">Repetir contrase&ntilde;a</label>
+          <input
+            [(ngModel)]="password2"
+            [ngModelOptions]="{ standalone: true }"
+            type="password"
+            class="form-control"
+            placeholder="Repetir contrase&ntilde;a"
+          />
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="form-check align-items-center">
+          <input
+            [(ngModel)]="terminos"
+            [ngModelOptions]="{ standalone: true }"
+            type="checkbox"
+            class="form-check-input"
+          />
+          <label class="form-check-label" for="Check"
+            >Acepto los terminos y condiciones.</label
+          >
+        </div>
+
+        <button
+          (click)="add_user()"
+          type="submit"
+          class="btn btn-primary mt-3"
+          unchecked
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 <br />
 <div [innerHTML]="htmladd"></div>
