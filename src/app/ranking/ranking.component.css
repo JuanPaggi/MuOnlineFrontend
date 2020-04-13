@@ -16,3 +16,6 @@ span {
 .alert-custom {
   background-color: rgba(222, 226, 230, 0.7);
 }
+.table-custom {
+  min-height: 714px;
+}

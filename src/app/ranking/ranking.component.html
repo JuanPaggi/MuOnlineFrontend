@@ -16,52 +16,54 @@
 
   <button class="btn btn-custom" (click)="filtrar_clase(96)">RF</button>
 </div>
-<table class="table table-sm text-center pt-0 mt-0">
-  <thead>
-    <tr>
-      <th scope="col">rank</th>
-      <th scope="col">nombre</th>
-      <th scope="col">clase</th>
-      <th scope="col">nivel</th>
-      <th scope="col">reset</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let item of ranking_show">
-    <tr>
-      <th scope="row">{{ ranking_show.indexOf(item) + 1 + pagina }}</th>
-      <td>{{ item.personaje }}</td>
-      <td [ngSwitch]="item.clase">
-        <div *ngSwitchCase="0">WIZ</div>
-        <div *ngSwitchCase="1">SM</div>
-        <div *ngSwitchCase="2">GM</div>
-        <div *ngSwitchCase="16">DK</div>
-        <div *ngSwitchCase="17">BK</div>
-        <div *ngSwitchCase="18">BM</div>
-        <div *ngSwitchCase="32">ELF</div>
-        <div *ngSwitchCase="33">ME</div>
-        <div *ngSwitchCase="34">HE</div>
-        <div *ngSwitchCase="48">MG</div>
-        <div *ngSwitchCase="50">DM</div>
-        <div *ngSwitchCase="64">DL</div>
-        <div *ngSwitchCase="66">LE</div>
-        <div *ngSwitchCase="80">SUM</div>
-        <div *ngSwitchCase="81">BS</div>
-        <div *ngSwitchCase="82">DimM</div>
-        <div *ngSwitchCase="96">RF</div>
-        <div *ngSwitchCase="97">FM</div>
-      </td>
-      <td>{{ item.nroLevel }}</td>
-      <td>{{ item.nroReset }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-custom">
+  <table class="table table-sm text-center pt-0 mt-0">
+    <thead>
+      <tr>
+        <th scope="col">rank</th>
+        <th scope="col">nombre</th>
+        <th scope="col">clase</th>
+        <th scope="col">nivel</th>
+        <th scope="col">reset</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of ranking_show">
+      <tr>
+        <th scope="row">{{ ranking_show.indexOf(item) + 1 + pagina * 20 }}</th>
+        <td>{{ item.personaje }}</td>
+        <td [ngSwitch]="item.clase">
+          <div *ngSwitchCase="0">WIZ</div>
+          <div *ngSwitchCase="1">SM</div>
+          <div *ngSwitchCase="2">GM</div>
+          <div *ngSwitchCase="16">DK</div>
+          <div *ngSwitchCase="17">BK</div>
+          <div *ngSwitchCase="18">BM</div>
+          <div *ngSwitchCase="32">ELF</div>
+          <div *ngSwitchCase="33">ME</div>
+          <div *ngSwitchCase="34">HE</div>
+          <div *ngSwitchCase="48">MG</div>
+          <div *ngSwitchCase="50">DM</div>
+          <div *ngSwitchCase="64">DL</div>
+          <div *ngSwitchCase="66">LE</div>
+          <div *ngSwitchCase="80">SUM</div>
+          <div *ngSwitchCase="81">BS</div>
+          <div *ngSwitchCase="82">DimM</div>
+          <div *ngSwitchCase="96">RF</div>
+          <div *ngSwitchCase="97">FM</div>
+        </td>
+        <td>{{ item.nroLevel }}</td>
+        <td>{{ item.nroReset }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div class="container text-center mb-5">
   <div class="row">
     <div class="col">
       <button
         *ngIf="btn_anterior"
         class="btn btn-primary"
-        (click)="filtrar_pagina(1)"
+        (click)="back_page()"
       >
         Anterior
       </button>
@@ -79,7 +81,7 @@
       <button
         *ngIf="btn_siguiente"
         class="btn btn-primary"
-        (click)="filtrar_pagina(2)"
+        (click)="next_page()"
       >
         Siguiente
       </button>
