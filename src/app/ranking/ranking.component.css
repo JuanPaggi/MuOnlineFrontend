@@ -1,0 +1,18 @@
+span {
+  font-size: 35px;
+  font-weight: bold;
+}
+.bordernav {
+  border: 1px solid lightgrey;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+}
+.btn-custom {
+  color: rgb(146, 0, 0);
+}
+.btn-custom:hover {
+  text-decoration: underline;
+}
+.alert-custom {
+  background-color: rgba(222, 226, 230, 0.7);
+}

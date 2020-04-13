@@ -8,13 +8,16 @@ import { PersonajeDatosDto } from '../dto/dto_pj/PersonajeDatosDto';
   styleUrls: ['./ranking.component.css'],
 })
 export class RankingComponent implements OnInit {
-  ranking: PersonajeDatosDto[];
-  ranking_show: PersonajeDatosDto[];
-  ranking_fil: PersonajeDatosDto[];
+  private ranking: PersonajeDatosDto[];
+  private ranking_fil: PersonajeDatosDto[];
+
+  public ranking_show: PersonajeDatosDto[];
 
   public btn_siguiente: boolean;
   public btn_anterior: boolean;
-  public show_btn: number;
+  public btn_filter: boolean;
+
+  private show_btn: number;
 
   public pagina: number;
 
@@ -39,10 +42,15 @@ export class RankingComponent implements OnInit {
   public filtrar_clase(cl: number) {
     this.ranking_fil = [];
     for (let i = 0; i < this.ranking.length; i++) {
-      if (this.ranking[i].clase == cl) {
+      if (
+        this.ranking[i].clase == cl ||
+        this.ranking[i].clase == cl + 1 ||
+        this.ranking[i].clase == cl + 2
+      ) {
         this.ranking_fil.push(this.ranking[i]);
       }
     }
+    this.btn_filter = true;
     this.ranking_show = this.ranking_fil;
   }
 
@@ -102,6 +110,7 @@ export class RankingComponent implements OnInit {
   }
 
   public reset_filter() {
+    this.btn_filter = false;
     this.filtrar_pagina(0);
   }
 }

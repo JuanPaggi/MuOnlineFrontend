@@ -22,6 +22,7 @@ import { UserInfoComponent } from './user-menu/user-info/user-info.component';
 import { ChangeNameComponent } from './user-menu/user-info/change-name/change-name.component';
 import { ChangeEmailComponent } from './user-menu/user-info/change-email/change-email.component';
 import { ChangePasswordComponent } from './user-menu/user-info/change-password/change-password.component';
+import { UsersService } from './services/users/users.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { ChangePasswordComponent } from './user-menu/user-info/change-password/c
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
