@@ -17,12 +17,11 @@ export class RankingComponent implements OnInit {
   public btn_anterior: boolean;
   public btn_filter: boolean;
 
-  private show_btn: number;
-
   public pagina: number;
 
   constructor(private pj_service: PersonajesService) {
     this.ranking_show = [];
+    this.ranking_fil = [];
   }
 
   ngOnInit(): void {
@@ -35,8 +34,98 @@ export class RankingComponent implements OnInit {
       .get_character(new PersonajeDatosDto())
       .subscribe((response) => {
         this.ranking = response;
-        this.filtrar_pagina(0);
+        this.reset_ranking();
       });
+  }
+
+  private reset_ranking() {
+    this.ranking_fil = this.ranking;
+    this.btn_filter = false;
+    this.pagina = 0;
+    this.ordenar_pagina();
+  }
+
+  private ordenar_pagina() {
+    if (this.ranking_fil.length < 20) {
+      this.mostrar_ranking(0, 20);
+      this.control_botones(0); //NO BUTTONS
+    } else {
+      switch (this.pagina) {
+        case 0:
+          this.mostrar_ranking(0, 20);
+          if (this.ranking_fil.length > 20) {
+            this.control_botones(1); // ONLY NEXT BUTTON
+          } else {
+            this.control_botones(0); // NO BUTTONS
+          }
+          break;
+        case 1:
+          this.mostrar_ranking(20, 40);
+          if (this.ranking_fil.length > 20 && this.ranking_fil.length < 40) {
+            this.control_botones(2); // ONLY BACK BUTTON
+          } else {
+            this.control_botones(3); // ALL BUTTONS
+          }
+          break;
+
+        case 2:
+          this.mostrar_ranking(40, 60);
+          if (this.ranking_fil.length > 40 && this.ranking_fil.length < 60) {
+            this.control_botones(2); // ONLY BACK BUTTON
+          } else {
+            this.control_botones(3); // ALL BUTTONS
+          }
+          break;
+
+        case 3:
+          this.mostrar_ranking(60, 80);
+          if (this.ranking_fil.length > 60 && this.ranking_fil.length < 80) {
+            this.control_botones(2); // ONLY BACK BUTTON
+          } else {
+            this.control_botones(3); // ALL BUTTONS
+          }
+          break;
+
+        case 4:
+          this.mostrar_ranking(80, 100);
+          if (this.ranking_fil.length > 80) {
+            this.control_botones(2);
+          }
+          break;
+      }
+    }
+  }
+
+  private control_botones(accion: number) {
+    switch (accion) {
+      case 0: // NO BUTTONS
+        this.btn_anterior = false;
+        this.btn_siguiente = false;
+        break;
+      case 1: // ONLY NEXT
+        this.btn_anterior = false;
+        this.btn_siguiente = true;
+        break;
+      case 2: // ONLY BACK
+        this.btn_anterior = true;
+        this.btn_siguiente = false;
+        break;
+      case 3: // ALL BUTTONS
+        this.btn_anterior = true;
+        this.btn_siguiente = true;
+        break;
+    }
+  }
+
+  private mostrar_ranking(inicio: number, fin: number) {
+    this.ranking_show = [];
+    for (let i = inicio; i < fin; i++) {
+      if (this.ranking_fil[i]) {
+        this.ranking_show.push(this.ranking_fil[i]);
+      } else {
+        break;
+      }
+    }
   }
 
   public filtrar_clase(cl: number) {
@@ -51,66 +140,24 @@ export class RankingComponent implements OnInit {
       }
     }
     this.btn_filter = true;
-    this.ranking_show = this.ranking_fil;
+    this.ordenar_pagina();
   }
 
-  private button_control(num: number) {
-    switch (num) {
-      case 0:
-        this.btn_anterior = false;
-        this.btn_siguiente = true;
-        break;
-      case 1:
-        this.btn_anterior = true;
-        this.btn_siguiente = false;
-        break;
-      case 2:
-        this.btn_anterior = true;
-        this.btn_siguiente = true;
+  public next_page() {
+    if (this.pagina < 5) {
+      this.pagina += 1;
+      this.ordenar_pagina();
     }
   }
 
-  private paginado(inicio: number, fin: number) {
-    this.ranking_fil = [];
-    for (let i = inicio; i < fin; i++) {
-      if (this.ranking[i]) {
-        this.ranking_fil.push(this.ranking[i]);
-      } else {
-        this.show_btn = 1;
-        break;
-      }
+  public back_page() {
+    if (this.pagina > 0) {
+      this.pagina -= 1;
+      this.ordenar_pagina();
     }
-    this.ranking_show = this.ranking_fil;
-  }
-
-  public filtrar_pagina(boton: number) {
-    switch (boton) {
-      case 0:
-        this.pagina = 0;
-        this.show_btn = 0;
-        break;
-      case 1:
-        if (this.pagina >= 20) {
-          this.pagina -= 20;
-        }
-        this.show_btn = 0;
-        break;
-      case 2:
-        if (this.pagina <= 80) {
-          this.pagina += 20;
-        }
-        this.show_btn = 1;
-        break;
-    }
-    if (this.pagina != 0 && this.pagina != 80) {
-      this.show_btn = 2;
-    }
-    this.paginado(this.pagina, this.pagina + 20);
-    this.button_control(this.show_btn);
   }
 
   public reset_filter() {
-    this.btn_filter = false;
-    this.filtrar_pagina(0);
+    this.reset_ranking();
   }
 }

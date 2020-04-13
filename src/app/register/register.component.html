@@ -4,7 +4,10 @@
     <form [formGroup]="register_form" class="mt-4">
       <div class="form-group row my-3">
         <div class="form-group col my-0">
-          <label for="inputNombre">Nombre</label>
+          <label for="inputNombre"
+            >Nombre
+            <small class="text-danger">*Maximo 10 caracteres</small></label
+          >
           <input
             [(ngModel)]="name"
             [ngModelOptions]="{ standalone: true }"
@@ -18,7 +21,7 @@
         <div class="form-group col my-0">
           <label for="inputUser"
             >Usuario
-            <small class="text-danger">*Maximo 9 caracteres</small></label
+            <small class="text-danger">*Maximo 10 caracteres</small></label
           >
           <input
             [(ngModel)]="username"
@@ -45,7 +48,7 @@
         <div class="form-group col">
           <label for="exampleInputPassword1"
             >Contrase&ntilde;a
-            <small class="text-danger">*Maximo 9 caracteres</small></label
+            <small class="text-danger">*Maximo 10 caracteres</small></label
           >
           <input
             [(ngModel)]="password1"

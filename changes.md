@@ -108,3 +108,8 @@
 -Downloads: cambio minimo en estilo, cliente subido a mediafire y mega.
 -Ranking: cambio en el filtrado, mostrar boton 'borrar filtro' solo si antes se aplico uno y cambio minimo de estilo.
 -Home: lineas divisoras blancas eliminadas de las columnas laterales.
+
+# Joaco T 13/4/2020 -2
+
+-Registro: cambio en requisitos.
+-Ranking: cambio completo de logica del paginado.

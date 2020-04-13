@@ -46,48 +46,52 @@ export class RegisterComponent implements OnInit {
   add_user() {
     console.log(this.terminos);
     if (this.terminos) {
-      if (this.username.length < 10) {
-        if (this.password1.length < 10) {
-          if (this.password1 == this.password2) {
-            if (this.register_form.valid) {
-              const user = new CreateUser();
-              user.nombre = this.name;
-              user.usuario = this.username;
-              user.email = this.email;
-              user.clave = this.password1;
-              this.user_service.add_user(user).subscribe(
-                (response) => {
-                  console.log(response);
-                  this.router.navigateByUrl(`/`);
-                },
-                (err) => {
-                  if (err.status === 403) {
-                    this.htmladd =
-                      '<div class="alert alert-danger">El usuario ingresado ya existe.</div>';
+      if (this.name.length < 11) {
+        if (this.username.length < 11) {
+          if (this.password1.length < 11) {
+            if (this.password1 == this.password2) {
+              if (this.register_form.valid) {
+                const user = new CreateUser();
+                user.nombre = this.name;
+                user.usuario = this.username;
+                user.email = this.email;
+                user.clave = this.password1;
+                this.user_service.add_user(user).subscribe(
+                  (response) => {
+                    this.router.navigateByUrl(`/`);
+                  },
+                  (err) => {
+                    if (err.status === 403) {
+                      this.htmladd =
+                        '<div class="alert alert-danger">El usuario ingresado ya existe.</div>';
+                    }
+                    if (err.status === 401) {
+                      this.htmladd =
+                        '<div class="alert alert-danger">Email incorrecto.</div>';
+                    }
                   }
-                  if (err.status === 401) {
-                    this.htmladd =
-                      '<div class="alert alert-danger">Email incorrecto.</div>';
-                  }
-                }
-              );
+                );
+              } else {
+                // Formulario invalido
+                this.htmladd =
+                  '<div class="alert alert-danger"> Formulario invalido</div>';
+              }
             } else {
-              // Formulario invalido
               this.htmladd =
-                '<div class="alert alert-danger"> Formulario invalido</div>';
+                '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
+              // Password incorrecto
             }
           } else {
             this.htmladd =
-              '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
-            // Password incorrecto
+              '<div class="alert alert-danger">La contrase&ntilde;a debe tener menos de 10 caracteres.</div>';
           }
         } else {
           this.htmladd =
-            '<div class="alert alert-danger">La contrase&ntilde;a debe tener menos de 9 caracteres.</div>';
+            '<div class="alert alert-danger">El usuario debe tener menos de 10 caracteres.</div>';
         }
       } else {
         this.htmladd =
-          '<div class="alert alert-danger">El usuario debe tener menos de 9 caracteres.</div>';
+          '<div class="alert alert-danger">El nombre debe tener menos de 10 caracteres.</div>';
       }
     } else {
       this.htmladd =
