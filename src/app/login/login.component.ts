@@ -63,6 +63,8 @@ export class LoginComponent implements OnInit {
           case 401:
             this.htmlToAdd = '<p class="text-danger">Cuenta bloqueada.<p>';
             break;
+          case 404:
+            this.htmlModal = '<p class="text-danger">El usuario no existe.</p>';
         }
       }
     );
@@ -76,12 +78,17 @@ export class LoginComponent implements OnInit {
       (response) => {
         if (response) {
           this.ComprobarUsuario();
+        } else {
+          this.htmlModal =
+            '<div class="alert alert-danger my-2">Codigo incorrecto.</div>';
         }
       },
       (err) => {
-        console.log(err);
-        this.htmlModal =
-          '<div class="alert alert-danger">Codigo incorrecto.</div>';
+        switch (err.status) {
+          case 404:
+            this.htmlModal =
+              '<div class="alert alert-danger">El usuario no existe.</div>';
+        }
       }
     );
   }
