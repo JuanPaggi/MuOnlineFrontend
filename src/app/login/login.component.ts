@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioLoginDto } from '../dto/dto_usuarios/UsuarioLoginDto';
 import { UsersService } from '../services/users/users.service';
-import { UsuarioEditDto } from '../dto/dto_usuarios/UsuarioEditDto';
 import { UsuarioDatosDto } from '../dto/dto_usuarios/UsuarioDatosDto';
 import { UsuarioByIdDto } from '../dto/dto_usuarios/UsuarioByIdDto';
 import { User } from '../dto/user.model';
 import { Router } from '@angular/router';
+import { UsuarioEditDto } from '../dto/dto_usuarios/UsuarioEditDto';
+
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -16,10 +18,12 @@ export class LoginComponent implements OnInit {
   usuario: String;
   clave: String;
   id_usuario: number;
+  verification_code: String;
 
   Usuario: UsuarioDatosDto;
 
   htmlToAdd: String;
+  htmlModal: String;
 
   user: User;
 
@@ -36,20 +40,50 @@ export class LoginComponent implements OnInit {
     let login = new UsuarioLoginDto();
     login.usuario = this.usuario;
     login.clave = this.clave;
-    this.usuariosSrv.verify_user(login).subscribe((response) => {
-      if (response != 0) {
-        this.id_usuario = response;
-        this.usuariosSrv
-          .get_user(new UsuarioByIdDto(this.id_usuario))
-          .subscribe((response) => {
-            this.Usuario = response;
-            this.logIn(this.usuario, this.id_usuario, event);
-            window.location.href = '/';
-          });
-      } else {
-        this.htmlToAdd = '<p class="text-danger">Datos Incorrectos<p>';
+    this.usuariosSrv.verify_user(login).subscribe(
+      (response) => {
+        if (response != 0) {
+          this.id_usuario = response;
+          this.usuariosSrv
+            .get_user(new UsuarioByIdDto(this.id_usuario))
+            .subscribe((response) => {
+              this.Usuario = response;
+              this.logIn(this.usuario, this.id_usuario, event);
+              window.location.href = '/';
+            });
+        } else {
+          this.htmlToAdd = '<p class="text-danger">Datos Incorrectos<p>';
+        }
+      },
+      (err) => {
+        switch (err.status) {
+          case 300:
+            $('#exampleModal').modal('toggle');
+            break;
+          case 401:
+            this.htmlToAdd = '<p class="text-danger">Cuenta bloqueada.<p>';
+            break;
+        }
       }
-    });
+    );
+  }
+
+  comprobar_activacion() {
+    let verificar = new UsuarioEditDto();
+    verificar.dato = this.usuario;
+    verificar.dato2 = this.verification_code;
+    this.usuariosSrv.is_verified(verificar).subscribe(
+      (response) => {
+        if (response) {
+          this.ComprobarUsuario();
+        }
+      },
+      (err) => {
+        console.log(err);
+        this.htmlModal =
+          '<div class="alert alert-danger">Codigo incorrecto.</div>';
+      }
+    );
   }
 
   logIn(username: String, id_usuario: number, event: Event) {

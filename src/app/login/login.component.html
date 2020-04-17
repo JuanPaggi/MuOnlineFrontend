@@ -26,7 +26,7 @@
           Recordarme
         </label>
       </div>
-      <button 
+      <button
         (click)="ComprobarUsuario()"
         type="submit"
         class="mb-2 btn btn-secondary"
@@ -52,5 +52,50 @@
     <button (click)="clickedSalir()" class="list-group-item bgnone">
       Salir
     </button>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Verificar cuenta</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group d-flex flex-column align-items-center">
+            <label for="security_code">
+              Codigo de verificacion:
+            </label>
+            <input
+              type="text"
+              name="security_code"
+              class="form-control w-50"
+              [(ngModel)]="verification_code"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <div [innerHTML]="htmlModal"></div>
+          </div>
+          <button (click)="comprobar_activacion()" class="btn btn-primary">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

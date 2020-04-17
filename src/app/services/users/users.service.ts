@@ -44,6 +44,15 @@ export class UsersService {
     );
   }
 
+  public is_verified(body: UsuarioEditDto): Observable<Response> {
+    let headers = {};
+    return this.http.post<Response>(
+      environment.apiEndpoint + 'usuarios/login/verificarCodigo',
+      body,
+      headers
+    );
+  }
+
   public edit_name(
     body: UsuarioEditDto,
     id_user: number
