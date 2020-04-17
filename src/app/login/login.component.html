@@ -20,12 +20,6 @@
           placeholder="Clave"
         />
       </div>
-      <div class="form-check mb-2">
-        <input type="checkbox" class="form-check-input" />
-        <label class="form-check-label" for="Check">
-          Recordarme
-        </label>
-      </div>
       <button
         (click)="ComprobarUsuario()"
         type="submit"
@@ -45,10 +39,7 @@
   </div>
   <div class="list-group list-group-flush">
     <a class="list-group-item bgnone" routerLink="/user">Mi Cuenta</a>
-    <a class="list-group-item bgnone" routerLink="/user/personajes"
-      >Personajes</a
-    >
-    <a class="list-group-item bgnone" href="/user/shop">Tienda</a>
+    <a class="list-group-item bgnone" routerLink="/user/personajes">Personajes</a>
     <button (click)="clickedSalir()" class="list-group-item bgnone">
       Salir
     </button>
