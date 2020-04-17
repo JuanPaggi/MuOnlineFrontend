@@ -42,9 +42,13 @@ export class PersonajesComponent implements OnInit {
           '<div class="alert alert-success">Puntos reiniciados correctamente.</div>';
       },
       (err) => {
-        if (err.status == 403) {
-          this.htmlAdd =
-            '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+        switch (err.status) {
+          case 403:
+            this.htmlAdd =
+              '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+          case 500:
+            this.htmlAdd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
         }
       }
     );

@@ -48,9 +48,13 @@ export class ChangeEmailComponent implements OnInit {
           '<div class="alert alert-success">Email cambiado correctamente.</div>';
       },
       (err) => {
-        if (err.status == 403) {
-          this.htmlAdd =
-            '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+        switch (err.status) {
+          case 403:
+            this.htmlAdd =
+              '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+          case 500:
+            this.htmlAdd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
         }
       }
     );
