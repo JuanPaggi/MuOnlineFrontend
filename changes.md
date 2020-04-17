@@ -118,3 +118,9 @@
 
 -Login: Activacion de cuenta con codigo implementada
 -Registro: Comprobacion de formato valido de email implementada
+
+# Juan Paggi 17/4/2020
+
+-Se quito el recordame del login
+-Se quito tienda del panel
+-Se agrego el boton be contacto
