@@ -43,47 +43,58 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  private verify_email(email: String) {
+    return email.includes('@') && email.includes('.com');
+  }
+
   add_user() {
     console.log(this.terminos);
     if (this.terminos) {
-      if (this.name.length < 11) {
-        if (this.username.length < 11) {
-          if (this.password1.length < 11) {
-            if (this.password1 == this.password2) {
-              if (this.register_form.valid) {
-                const user = new CreateUser();
-                user.nombre = this.name;
-                user.usuario = this.username;
-                user.email = this.email;
-                user.clave = this.password1;
-                this.user_service.add_user(user).subscribe(
-                  (response) => {
-                    this.router.navigateByUrl(`/`);
-                  },
-                  (err) => {
-                    if (err.status === 403) {
-                      this.htmladd =
-                        '<div class="alert alert-danger">El usuario ingresado ya existe.</div>';
+      if (this.name.length < 11 && this.name.length > 5) {
+        if (this.username.length < 11 && this.name.length > 5) {
+          if (this.verify_email(this.email)) {
+            if (this.password1.length < 11 && this.name.length > 5) {
+              if (this.password1 == this.password2) {
+                if (this.register_form.valid) {
+                  const user = new CreateUser();
+                  user.nombre = this.name;
+                  user.usuario = this.username;
+                  user.email = this.email;
+                  user.clave = this.password1;
+                  this.user_service.add_user(user).subscribe(
+                    (response) => {
+                      this.router.navigateByUrl(`/`);
+                    },
+                    (err) => {
+                      switch (err.status) {
+                        case 401:
+                          this.htmladd =
+                            '<div class="alert alert-danger">Los datos ingresados deben contener al menos 6 caracteres.</div>';
+                          break;
+                        case 403:
+                          this.htmladd =
+                            '<div class="alert alert-danger">El usuario o email ingresados ya existen.</div>';
+                          break;
+                      }
                     }
-                    if (err.status === 401) {
-                      this.htmladd =
-                        '<div class="alert alert-danger">Email incorrecto.</div>';
-                    }
-                  }
-                );
+                  );
+                } else {
+                  // Formulario invalido
+                  this.htmladd =
+                    '<div class="alert alert-danger"> Formulario invalido</div>';
+                }
               } else {
-                // Formulario invalido
                 this.htmladd =
-                  '<div class="alert alert-danger"> Formulario invalido</div>';
+                  '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
+                // Password incorrecto
               }
             } else {
               this.htmladd =
-                '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
-              // Password incorrecto
+                '<div class="alert alert-danger">La contrase&ntilde;a debe tener menos de 10 caracteres.</div>';
             }
           } else {
             this.htmladd =
-              '<div class="alert alert-danger">La contrase&ntilde;a debe tener menos de 10 caracteres.</div>';
+              '<div class="alert alert-danger">El formato del email no es valido.</div>';
           }
         } else {
           this.htmladd =

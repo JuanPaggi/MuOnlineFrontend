@@ -113,3 +113,8 @@
 
 -Registro: cambio en requisitos.
 -Ranking: cambio completo de logica del paginado.
+
+# Joaco T 16/4/2020
+
+-Login: Activacion de cuenta con codigo implementada
+-Registro: Comprobacion de formato valido de email implementada
