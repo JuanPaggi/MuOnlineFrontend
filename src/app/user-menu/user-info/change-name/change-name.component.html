@@ -21,6 +21,8 @@
     </div>
     <div [innerHTML]="htmlAdd" class="my-2"></div>
 
-    <button (click)="change_name()" class="btn btn-primary">Cambiar</button>
+    <button (click)="change_name()" class="btn btn-primary">
+      <div [innerHTML]="boton"></div>
+    </button>
   </form>
 </div>

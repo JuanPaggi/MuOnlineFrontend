@@ -83,13 +83,10 @@
           >
         </div>
 
-        <button
-          (click)="add_user()"
-          type="submit"
-          class="btn btn-primary mt-3"
-          unchecked
-        >
-          Enviar
+        <button (click)="add_user()" type="submit" class="btn btn-primary mt-3">
+          <div [innerHTML]="boton">
+            Enviar
+          </div>
         </button>
       </div>
     </form>

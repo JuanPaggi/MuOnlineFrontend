@@ -34,7 +34,9 @@
         Entrar
       </button>
     </form>
-    <a class="text-center" href="#">Olvidaste contrase&ntilde;a</a>
+    <a class="text-center" routerLink="/resetpass"
+      >Olvidaste contrase&ntilde;a</a
+    >
   </div>
   <div class="error-login" [innerHtml]="htmlToAdd"></div>
 </div>
@@ -48,7 +50,7 @@
     <a class="list-group-item bgnone" routerLink="/user/personajes"
       >Personajes</a
     >
-    <a class="list-group-item bgnone" href="/user/shop">Tienda</a>
+    <a class="list-group-item bgnone" routerLink="/shop">Tienda</a>
     <button (click)="clickedSalir()" class="list-group-item bgnone">
       Salir
     </button>
