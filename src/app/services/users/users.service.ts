@@ -97,6 +97,23 @@ export class UsersService {
     );
   }
 
+  public reset_pass(user: String, code: String): Observable<Response> {
+    let headers = {};
+    return this.http.post<Response>(
+      environment.apiEndpoint + '/usuarios/activarClave/' + user + '/' + code,
+      headers
+    );
+  }
+
+  public forgot_password(body: UsuarioEditDto): Observable<Response> {
+    let headers = {};
+    return this.http.post<Response>(
+      environment.apiEndpoint + '/usuarios/recuperarClave',
+      body,
+      headers
+    );
+  }
+
   setUserLoggedIn(user: User) {
     this.isUserLoggedIn = true;
     this.usserLogged = user;

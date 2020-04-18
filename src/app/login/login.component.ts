@@ -65,6 +65,8 @@ export class LoginComponent implements OnInit {
             break;
           case 404:
             this.htmlModal = '<p class="text-danger">El usuario no existe.</p>';
+          case 500:
+            this.htmlModal = '<p class="text-danger">Error en el servidor.</p>';
         }
       }
     );
@@ -88,6 +90,9 @@ export class LoginComponent implements OnInit {
           case 404:
             this.htmlModal =
               '<div class="alert alert-danger">El usuario no existe.</div>';
+          case 500:
+            this.htmlModal =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
         }
       }
     );

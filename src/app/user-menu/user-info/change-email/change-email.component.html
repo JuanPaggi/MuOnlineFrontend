@@ -21,6 +21,12 @@
     </div>
     <div [innerHTML]="htmlAdd" class="my-2"></div>
 
-    <button (click)="change_email()" class="btn btn-primary">Cambiar</button>
+    <button
+      (click)="change_email()"
+      class="btn btn-primary"
+      [disabled]="!boton_enabled"
+    >
+      <div [innerHTML]="boton"></div>
+    </button>
   </form>
 </div>

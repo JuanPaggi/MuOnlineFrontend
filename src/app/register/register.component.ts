@@ -21,9 +21,13 @@ export class RegisterComponent implements OnInit {
   logged: boolean;
 
   htmladd: String;
+  boton: String;
+  public boton_enabled: boolean;
 
   constructor(private user_service: UsersService, private router: Router) {
     this.terminos = false;
+    this.boton = 'Enviar';
+    this.boton_enabled = true;
   }
 
   ngOnInit() {
@@ -48,12 +52,15 @@ export class RegisterComponent implements OnInit {
   }
 
   add_user() {
-    console.log(this.terminos);
+    this.boton_enabled = false;
+    this.boton =
+      '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
+    this.htmladd = '';
     if (this.terminos) {
-      if (this.name.length < 11 && this.name.length > 5) {
-        if (this.username.length < 11 && this.name.length > 5) {
+      if (this.name.length < 16 && this.name.length > 3) {
+        if (this.username.length < 11 && this.username.length > 5) {
           if (this.verify_email(this.email)) {
-            if (this.password1.length < 11 && this.name.length > 5) {
+            if (this.password1.length < 16 && this.password1.length > 7) {
               if (this.password1 == this.password2) {
                 if (this.register_form.valid) {
                   const user = new CreateUser();
@@ -75,36 +82,74 @@ export class RegisterComponent implements OnInit {
                           this.htmladd =
                             '<div class="alert alert-danger">El usuario o email ingresados ya existen.</div>';
                           break;
+                        case 500:
+                          this.htmladd =
+                            '<div class="alert alert-danger">Error en el servidor.</div>';
                       }
+                      this.boton = 'Enviar';
+                      this.boton_enabled = true;
                     }
                   );
                 } else {
-                  // Formulario invalido
+                  this.boton = 'Enviar';
+                  this.boton_enabled = true;
                   this.htmladd =
                     '<div class="alert alert-danger"> Formulario invalido</div>';
                 }
               } else {
+                this.boton = 'Enviar';
+                this.boton_enabled = true;
                 this.htmladd =
                   '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
-                // Password incorrecto
               }
             } else {
-              this.htmladd =
-                '<div class="alert alert-danger">La contrase&ntilde;a debe tener menos de 10 caracteres.</div>';
+              if (this.password1.length > 15) {
+                this.boton = 'Enviar';
+                this.boton_enabled = true;
+                this.htmladd =
+                  '<div class="alert alert-danger">La contrase&ntilde;a debe tener un maximo de 15 caracteres.</div>';
+              } else {
+                this.boton = 'Enviar';
+                this.boton_enabled = true;
+                this.htmladd =
+                  '<div class="alert alert-danger">La contrase&ntilde;a debe tener al menos 8 caracteres.</div>';
+              }
             }
           } else {
+            this.boton = 'Enviar';
+            this.boton_enabled = true;
             this.htmladd =
               '<div class="alert alert-danger">El formato del email no es valido.</div>';
           }
         } else {
-          this.htmladd =
-            '<div class="alert alert-danger">El usuario debe tener menos de 10 caracteres.</div>';
+          this.boton = 'Enviar';
+          this.boton_enabled = true;
+          if (this.username.length > 10) {
+            this.htmladd =
+              '<div class="alert alert-danger">El usuario debe tener un maximo de 10 caracteres.</div>';
+          } else {
+            this.boton = 'Enviar';
+            this.boton_enabled = true;
+            this.htmladd =
+              '<div class="alert alert-danger">El usuario debe tener al menos 6 caracteres.</div>';
+          }
         }
       } else {
-        this.htmladd =
-          '<div class="alert alert-danger">El nombre debe tener menos de 10 caracteres.</div>';
+        if (this.name.length > 15) {
+          this.boton = 'Enviar';
+          this.boton_enabled = true;
+          this.htmladd =
+            '<div class="alert alert-danger">El nombre debe tener un maximo de 15 caracteres.</div>';
+        } else {
+          this.boton = 'Enviar';
+          this.boton_enabled = true;
+          this.htmladd =
+            '<div class="alert alert-danger">El nombre debe tener al menos 4 caracteres.</div>';
+        }
       }
     } else {
+      this.boton = 'Enviar';
+      this.boton_enabled = true;
       this.htmladd =
         '<div class="alert alert-danger">Debe aceptar terminos y condiciones.</div>';
     }

@@ -19,6 +19,8 @@ export class RankingComponent implements OnInit {
 
   public pagina: number;
 
+  public htmladd: String;
+
   constructor(private pj_service: PersonajesService) {
     this.ranking_show = [];
     this.ranking_fil = [];
@@ -30,12 +32,19 @@ export class RankingComponent implements OnInit {
   }
 
   private load_ranking() {
-    this.pj_service
-      .get_character(new PersonajeDatosDto())
-      .subscribe((response) => {
+    this.pj_service.get_character(new PersonajeDatosDto()).subscribe(
+      (response) => {
         this.ranking = response;
         this.reset_ranking();
-      });
+      },
+      (err) => {
+        switch (err.status) {
+          case 500:
+            this.htmladd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
+        }
+      }
+    );
   }
 
   private reset_ranking() {
@@ -46,7 +55,7 @@ export class RankingComponent implements OnInit {
   }
 
   private ordenar_pagina() {
-    if (this.ranking_fil.length < 20) {
+    if (this.ranking_fil.length < 21) {
       this.mostrar_ranking(0, 20);
       this.control_botones(0); //NO BUTTONS
     } else {
@@ -61,7 +70,7 @@ export class RankingComponent implements OnInit {
           break;
         case 1:
           this.mostrar_ranking(20, 40);
-          if (this.ranking_fil.length > 20 && this.ranking_fil.length < 40) {
+          if (this.ranking_fil.length > 20 && this.ranking_fil.length < 41) {
             this.control_botones(2); // ONLY BACK BUTTON
           } else {
             this.control_botones(3); // ALL BUTTONS
@@ -70,7 +79,7 @@ export class RankingComponent implements OnInit {
 
         case 2:
           this.mostrar_ranking(40, 60);
-          if (this.ranking_fil.length > 40 && this.ranking_fil.length < 60) {
+          if (this.ranking_fil.length > 40 && this.ranking_fil.length < 61) {
             this.control_botones(2); // ONLY BACK BUTTON
           } else {
             this.control_botones(3); // ALL BUTTONS
@@ -79,7 +88,7 @@ export class RankingComponent implements OnInit {
 
         case 3:
           this.mostrar_ranking(60, 80);
-          if (this.ranking_fil.length > 60 && this.ranking_fil.length < 80) {
+          if (this.ranking_fil.length > 60 && this.ranking_fil.length < 81) {
             this.control_botones(2); // ONLY BACK BUTTON
           } else {
             this.control_botones(3); // ALL BUTTONS
@@ -140,6 +149,7 @@ export class RankingComponent implements OnInit {
       }
     }
     this.btn_filter = true;
+    this.pagina = 0;
     this.ordenar_pagina();
   }
 

@@ -124,3 +124,11 @@
 -Se quito el recordame del login
 -Se quito tienda del panel
 -Se agrego el boton be contacto
+
+# Joaco T 17/4/2020
+
+-Recuperacion de contrasena, activacion de clave.
+
+# Joaco T 18/4/2020
+
+-Mostrar loading en boton e inhabilitar boton mientras de hace peticiones a backend.

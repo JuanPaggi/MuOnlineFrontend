@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
 
   online: boolean;
 
+  public htmladd: String;
+
   constructor(
     private pj_service: PersonajesService,
     private usuariosSrv: UsersService,
@@ -34,28 +36,62 @@ export class HomeComponent implements OnInit {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.load_ranking();
     this.load_ranking_guild();
-    this.usuariosSrv.users_online().subscribe((response) => {
-      this.onlineUs = response;
-    });
-    this.server.server_status().subscribe((response) => {
-      this.online = response;
-    });
+    this.usuariosSrv.users_online().subscribe(
+      (response) => {
+        this.onlineUs = response;
+      },
+      (err) => {
+        switch (err.status) {
+          case 500:
+            this.htmladd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
+        }
+      }
+    );
+    this.server.server_status().subscribe(
+      (response) => {
+        this.online = response;
+      },
+      (err) => {
+        switch (err.status) {
+          case 500:
+            this.htmladd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
+        }
+      }
+    );
   }
 
   private load_ranking() {
-    this.pj_service
-      .get_character(new PersonajeDatosDto())
-      .subscribe((response) => {
+    this.pj_service.get_character(new PersonajeDatosDto()).subscribe(
+      (response) => {
         this.ranking = response;
         while (this.ranking.length > 10) {
           this.ranking.pop();
         }
-      });
+      },
+      (err) => {
+        switch (err.status) {
+          case 500:
+            this.htmladd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
+        }
+      }
+    );
   }
 
   private load_ranking_guild() {
-    this.guildSrv.get_guilds(new GuildDatoDto()).subscribe((response) => {
-      this.ranking_guild = response;
-    });
+    this.guildSrv.get_guilds(new GuildDatoDto()).subscribe(
+      (response) => {
+        this.ranking_guild = response;
+      },
+      (err) => {
+        switch (err.status) {
+          case 500:
+            this.htmladd =
+              '<div class="alert alert-danger">Error en el servidor.</div>';
+        }
+      }
+    );
   }
 }

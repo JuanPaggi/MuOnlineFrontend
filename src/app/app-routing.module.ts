@@ -13,6 +13,8 @@ import { UserInfoComponent } from './user-menu/user-info/user-info.component';
 import { ChangeNameComponent } from './user-menu/user-info/change-name/change-name.component';
 import { ChangeEmailComponent } from './user-menu/user-info/change-email/change-email.component';
 import { ChangePasswordComponent } from './user-menu/user-info/change-password/change-password.component';
+import { RecuperarComponent } from './recuperar/recuperar.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,10 @@ const routes: Routes = [
       {
         path: '',
         component: NewsComponent,
+      },
+      {
+        path: 'resetpass',
+        component: ForgotpasswordComponent,
       },
       {
         path: 'downloads',
@@ -64,6 +70,25 @@ const routes: Routes = [
           {
             path: 'personajes',
             component: PersonajesComponent,
+          },
+        ],
+      },
+      {
+        path: 'usuarios',
+        children: [
+          {
+            path: 'activarClave',
+            children: [
+              {
+                path: ':user',
+                children: [
+                  {
+                    path: ':code',
+                    component: RecuperarComponent,
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

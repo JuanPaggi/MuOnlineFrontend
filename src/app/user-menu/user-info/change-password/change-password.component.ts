@@ -20,9 +20,13 @@ export class ChangePasswordComponent implements OnInit {
   new_pass2: String;
   password: String;
   htmlAdd: String;
+  boton: String;
+  public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
     this.Usuario = new UsuarioDatosDto();
+    this.boton = 'Cambiar';
+    this.boton_enabled = true;
   }
 
   ngOnInit(): void {
@@ -40,9 +44,14 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   change_pass() {
+    this.boton_enabled = false;
+    this.boton =
+      '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     if (this.new_pass1 != this.new_pass2) {
       this.htmlAdd =
         '<div class="alert alert-danger">Las contrase&ntilde;as nos coinciden.</div>';
+      this.boton = 'Cambiar';
+      this.boton_enabled = true;
     } else {
       let dato = new UsuarioEditDto();
       dato.dato = this.password;
@@ -51,12 +60,20 @@ export class ChangePasswordComponent implements OnInit {
         (response) => {
           this.htmlAdd =
             '<div class="alert alert-success">Contrase&ntilde;a cambiada correctamente.</div>';
+          this.boton = 'Cambiar';
+          this.boton_enabled = true;
         },
         (err) => {
-          if (err.status == 403) {
-            this.htmlAdd =
-              '<div class="alert alert-danger">Contrase&ntilde;a actual incorrecta.</div>';
+          switch (err.status) {
+            case 403:
+              this.htmlAdd =
+                '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+            case 500:
+              this.htmlAdd =
+                '<div class="alert alert-danger">Error en el servidor.</div>';
           }
+          this.boton = 'Cambiar';
+          this.boton_enabled = true;
         }
       );
     }

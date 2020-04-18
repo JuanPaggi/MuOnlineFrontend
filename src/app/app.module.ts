@@ -24,6 +24,8 @@ import { ChangeNameComponent } from './user-menu/user-info/change-name/change-na
 import { ChangeEmailComponent } from './user-menu/user-info/change-email/change-email.component';
 import { ChangePasswordComponent } from './user-menu/user-info/change-password/change-password.component';
 import { UsersService } from './services/users/users.service';
+import { RecuperarComponent } from './recuperar/recuperar.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { UsersService } from './services/users/users.service';
     ChangeNameComponent,
     ChangeEmailComponent,
     ChangePasswordComponent,
+    RecuperarComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     AppRoutingModule,
