@@ -118,3 +118,11 @@
 
 -Login: Activacion de cuenta con codigo implementada
 -Registro: Comprobacion de formato valido de email implementada
+
+# Joaco T 17/4/2020
+
+-Recuperacion de contrasena, activacion de clave.
+
+# Joaco T 18/4/2020
+
+-Mostrar loading en boton e inhabilitar boton mientras de hace peticiones a backend.

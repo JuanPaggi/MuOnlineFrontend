@@ -21,9 +21,11 @@ export class ChangeNameComponent implements OnInit {
 
   htmlAdd: String;
   boton: String;
+  public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
     this.Usuario = new UsuarioDatosDto();
+    this.boton_enabled = true;
   }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class ChangeNameComponent implements OnInit {
   }
 
   change_name() {
+    this.boton_enabled = false;
     this.boton =
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     let dato = new UsuarioEditDto();
@@ -49,6 +52,7 @@ export class ChangeNameComponent implements OnInit {
     this.usuariosSrv.edit_name(dato, this.Usuario.idUsuario).subscribe(
       (response) => {
         this.boton = 'Cambiar';
+        this.boton_enabled = true;
         this.htmlAdd =
           '<div class="alert alert-success">Nombre cambiado correctamente.</div>';
       },
@@ -61,6 +65,7 @@ export class ChangeNameComponent implements OnInit {
             this.htmlAdd =
               '<div class="alert alert-danger">Error en el servidor.</div>';
         }
+        this.boton_enabled = true;
         this.boton = 'Cambiar';
       }
     );

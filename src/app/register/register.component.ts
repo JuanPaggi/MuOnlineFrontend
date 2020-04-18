@@ -22,10 +22,12 @@ export class RegisterComponent implements OnInit {
 
   htmladd: String;
   boton: String;
+  public boton_enabled: boolean;
 
   constructor(private user_service: UsersService, private router: Router) {
     this.terminos = false;
     this.boton = 'Enviar';
+    this.boton_enabled = true;
   }
 
   ngOnInit() {
@@ -50,10 +52,10 @@ export class RegisterComponent implements OnInit {
   }
 
   add_user() {
+    this.boton_enabled = false;
     this.boton =
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     this.htmladd = '';
-    console.log(this.terminos);
     if (this.terminos) {
       if (this.name.length < 16 && this.name.length > 3) {
         if (this.username.length < 11 && this.username.length > 5) {
@@ -85,41 +87,49 @@ export class RegisterComponent implements OnInit {
                             '<div class="alert alert-danger">Error en el servidor.</div>';
                       }
                       this.boton = 'Enviar';
+                      this.boton_enabled = true;
                     }
                   );
                 } else {
                   this.boton = 'Enviar';
+                  this.boton_enabled = true;
                   this.htmladd =
                     '<div class="alert alert-danger"> Formulario invalido</div>';
                 }
               } else {
                 this.boton = 'Enviar';
+                this.boton_enabled = true;
                 this.htmladd =
                   '<div class="alert alert-danger">La contrase&ntilde;a no coincide.</div>';
               }
             } else {
               if (this.password1.length > 15) {
                 this.boton = 'Enviar';
+                this.boton_enabled = true;
                 this.htmladd =
                   '<div class="alert alert-danger">La contrase&ntilde;a debe tener un maximo de 15 caracteres.</div>';
               } else {
                 this.boton = 'Enviar';
+                this.boton_enabled = true;
                 this.htmladd =
                   '<div class="alert alert-danger">La contrase&ntilde;a debe tener al menos 8 caracteres.</div>';
               }
             }
           } else {
             this.boton = 'Enviar';
+            this.boton_enabled = true;
             this.htmladd =
               '<div class="alert alert-danger">El formato del email no es valido.</div>';
           }
         } else {
           this.boton = 'Enviar';
+          this.boton_enabled = true;
           if (this.username.length > 10) {
             this.htmladd =
               '<div class="alert alert-danger">El usuario debe tener un maximo de 10 caracteres.</div>';
           } else {
             this.boton = 'Enviar';
+            this.boton_enabled = true;
             this.htmladd =
               '<div class="alert alert-danger">El usuario debe tener al menos 6 caracteres.</div>';
           }
@@ -127,16 +137,19 @@ export class RegisterComponent implements OnInit {
       } else {
         if (this.name.length > 15) {
           this.boton = 'Enviar';
+          this.boton_enabled = true;
           this.htmladd =
             '<div class="alert alert-danger">El nombre debe tener un maximo de 15 caracteres.</div>';
         } else {
           this.boton = 'Enviar';
+          this.boton_enabled = true;
           this.htmladd =
             '<div class="alert alert-danger">El nombre debe tener al menos 4 caracteres.</div>';
         }
       }
     } else {
       this.boton = 'Enviar';
+      this.boton_enabled = true;
       this.htmladd =
         '<div class="alert alert-danger">Debe aceptar terminos y condiciones.</div>';
     }

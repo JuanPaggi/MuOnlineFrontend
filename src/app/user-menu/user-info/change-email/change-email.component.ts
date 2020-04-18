@@ -21,10 +21,12 @@ export class ChangeEmailComponent implements OnInit {
 
   htmlAdd: String;
   boton: String;
+  public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
     this.Usuario = new UsuarioDatosDto();
     this.boton = 'Cambiar';
+    this.boton_enabled = true;
   }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class ChangeEmailComponent implements OnInit {
   }
 
   change_email() {
+    this.boton_enabled = false;
     this.boton =
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     let dato = new UsuarioEditDto();
@@ -51,6 +54,7 @@ export class ChangeEmailComponent implements OnInit {
         this.htmlAdd =
           '<div class="alert alert-success">Email cambiado correctamente.</div>';
         this.boton = 'Cambiar';
+        this.boton_enabled = true;
       },
       (err) => {
         switch (err.status) {
@@ -62,6 +66,7 @@ export class ChangeEmailComponent implements OnInit {
               '<div class="alert alert-danger">Error en el servidor.</div>';
         }
         this.boton = 'Cambiar';
+        this.boton_enabled = true;
       }
     );
   }

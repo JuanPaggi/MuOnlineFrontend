@@ -11,14 +11,17 @@ export class ForgotpasswordComponent implements OnInit {
   public username: String;
   public htmladd: String;
   public boton: String;
+  public boton_enabled: boolean;
 
   constructor(private usersSrv: UsersService) {
     this.boton = 'Enviar';
+    this.boton_enabled = true;
   }
 
   ngOnInit(): void {}
 
   password_reset_request() {
+    this.boton_enabled = false;
     this.boton =
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     if (this.username.length > 5 && this.username.length < 16) {
@@ -27,6 +30,7 @@ export class ForgotpasswordComponent implements OnInit {
       this.usersSrv.forgot_password(user).subscribe(
         (response) => {
           this.boton = 'Enviar';
+          this.boton_enabled = true;
           this.htmladd =
             '<div class="alert alert-success">Se ha enviado un codigo de recuperacion a tu email.</div>';
         },
@@ -39,11 +43,13 @@ export class ForgotpasswordComponent implements OnInit {
               this.htmladd =
                 '<div class="alert alert-danger">El usuario ingresado no existe.</div>';
           }
+          this.boton_enabled = true;
           this.boton = 'Enviar';
         }
       );
     } else {
       this.boton = 'Enviar';
+      this.boton_enabled = true;
       this.htmladd =
         '<div class="alert alert-danger">El usuario ingresado no existe.</div>';
     }

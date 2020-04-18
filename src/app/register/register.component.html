@@ -83,7 +83,12 @@
           >
         </div>
 
-        <button (click)="add_user()" type="submit" class="btn btn-primary mt-3">
+        <button
+          [disabled]="!boton_enabled"
+          (click)="add_user()"
+          type="submit"
+          class="btn btn-primary mt-3"
+        >
           <div [innerHTML]="boton">
             Enviar
           </div>
