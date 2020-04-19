@@ -3,4 +3,5 @@ export class UsuarioDatosDto {
   usuario: String;
   email: String;
   nombre: String;
+  creditos: number;
 }

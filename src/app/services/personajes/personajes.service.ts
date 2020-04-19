@@ -40,4 +40,13 @@ export class PersonajesService {
       body
     );
   }
+
+  public buy_boxes(body: UsuarioEditDto, uid: number): Observable<Response> {
+    let headers = {};
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/tienda/' + uid,
+      body,
+      headers
+    );
+  }
 }

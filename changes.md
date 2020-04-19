@@ -119,6 +119,12 @@
 -Login: Activacion de cuenta con codigo implementada
 -Registro: Comprobacion de formato valido de email implementada
 
+# Juan Paggi 17/4/2020
+
+-Se quito el recordame del login
+-Se quito tienda del panel
+-Se agrego el boton be contacto
+
 # Joaco T 17/4/2020
 
 -Recuperacion de contrasena, activacion de clave.
@@ -126,3 +132,9 @@
 # Joaco T 18/4/2020
 
 -Mostrar loading en boton e inhabilitar boton mientras de hace peticiones a backend.
+
+# Joaco T 18/4/2020
+
+-Implementacion de la tienda
+-Sistema de creditos
+-Botones que pegan al backend areeglados

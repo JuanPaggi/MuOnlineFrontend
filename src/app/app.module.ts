@@ -56,6 +56,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     HttpClientModule,
   ],
   providers: [UsersService],

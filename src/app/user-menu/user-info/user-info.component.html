@@ -1,6 +1,10 @@
 <div class="container ml-1">
-  <p>Bienvenido, {{ user.username }}!</p>
+  <div class="d-flex flex-row justify-content-between">
+    <p>Bienvenido, {{ user.username }}!</p>
+    <p>Creditos disponibles: {{ Usuario.creditos }}</p>
+  </div>
   <ul>
+    <li><a routerLink="/user/creditos">Comprar creditos</a></li>
     <li><a routerLink="/user/editname">Cambiar nombre</a></li>
     <li><a routerLink="/user/editemail">Cambiar email</a></li>
     <li><a routerLink="/user/changepass">Cambiar contrase&ntilde;a</a></li>
