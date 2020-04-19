@@ -14,19 +14,19 @@ export class DownloadsComponent implements OnInit {
     switch (num) {
       case 0:
         window.open(
-          'https://drive.google.com/open?id=1TPwo9zrhbQKPYeh2Vn6AdO4rdvO9TlSy',
+          'https://drive.google.com/open?id=1-Nl0xMoAu-s7H2CFmLYH26Qqw3J6x1GM',
           '_blank'
         );
         break;
       case 1:
         window.open(
-          'https://mega.nz/file/OYsGAKob#bWiuoG1mwHE7o3GVltReTZq5q76E6ELUQoXeCxPSF34',
+          'https://mega.nz/file/3AdnRSDJ#eftc6cmVzSnOBn2Nafz75TPUxjoz3L0Hj13g5QTQ-1c',
           '_blank'
         );
         break;
       case 2:
         window.open(
-          'https://www.mediafire.com/file/s4h6505o75bqki5/Mu_NewAge.rar/file',
+          'https://www.mediafire.com/file/8rglb2l5ji8rssf/Mu_NewAge.rar/file',
           '_blank'
         );
         break;
