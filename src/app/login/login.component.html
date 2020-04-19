@@ -24,8 +24,9 @@
         (click)="ComprobarUsuario()"
         type="submit"
         class="mb-2 btn btn-secondary"
+        [disabled]="!boton_enabled"
       >
-        Entrar
+        <div [innerHTML]="boton"></div>
       </button>
     </form>
     <a class="text-center" routerLink="/resetpass"
@@ -41,7 +42,9 @@
   </div>
   <div class="list-group list-group-flush">
     <a class="list-group-item bgnone" routerLink="/user">Mi Cuenta</a>
-    <a class="list-group-item bgnone" routerLink="/user/personajes">Personajes</a>
+    <a class="list-group-item bgnone" routerLink="/user/personajes"
+      >Personajes</a
+    >
     <button (click)="clickedSalir()" class="list-group-item bgnone">
       Salir
     </button>
@@ -70,6 +73,9 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="alert alert-info">
+          Se envio el codigo de verificacion al email de registro.
+        </div>
         <form action="">
           <div class="form-group d-flex flex-column align-items-center">
             <label for="security_code">
@@ -84,8 +90,12 @@
             />
             <div [innerHTML]="htmlModal"></div>
           </div>
-          <button (click)="comprobar_activacion()" class="btn btn-primary">
-            Enviar
+          <button
+            (click)="comprobar_activacion()"
+            class="btn btn-primary"
+            [disabled]="!btnmodal_enabled"
+          >
+            <div [innerHTML]="btnmodal"></div>
           </button>
         </form>
       </div>

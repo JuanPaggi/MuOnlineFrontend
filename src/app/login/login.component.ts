@@ -27,7 +27,17 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor(private usuariosSrv: UsersService, private router: Router) {}
+  boton: String;
+  boton_enabled: boolean;
+  btnmodal: String;
+  btnmodal_enabled: boolean;
+
+  constructor(private usuariosSrv: UsersService, private router: Router) {
+    this.boton = 'Entrar';
+    this.boton_enabled = true;
+    this.btnmodal = 'Enviar';
+    this.btnmodal_enabled = true;
+  }
 
   ngOnInit() {
     this.user = this.usuariosSrv.getUserLoggedIn();
@@ -37,6 +47,9 @@ export class LoginComponent implements OnInit {
   }
 
   ComprobarUsuario() {
+    this.boton =
+      '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
+    this.boton_enabled = false;
     let login = new UsuarioLoginDto();
     login.usuario = this.usuario;
     login.clave = this.clave;
@@ -52,6 +65,8 @@ export class LoginComponent implements OnInit {
               window.location.href = '/';
             });
         } else {
+          this.boton = 'Entrar';
+          this.boton_enabled = true;
           this.htmlToAdd = '<p class="text-danger">Datos Incorrectos<p>';
         }
       },
@@ -68,11 +83,16 @@ export class LoginComponent implements OnInit {
           case 500:
             this.htmlModal = '<p class="text-danger">Error en el servidor.</p>';
         }
+        this.boton = 'Entrar';
+        this.boton_enabled = true;
       }
     );
   }
 
   comprobar_activacion() {
+    this.btnmodal =
+      '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
+    this.btnmodal_enabled = false;
     let verificar = new UsuarioEditDto();
     verificar.dato = this.usuario;
     verificar.dato2 = this.verification_code;
@@ -81,6 +101,8 @@ export class LoginComponent implements OnInit {
         if (response) {
           this.ComprobarUsuario();
         } else {
+          this.btnmodal = 'Enviar';
+          this.btnmodal_enabled = true;
           this.htmlModal =
             '<div class="alert alert-danger my-2">Codigo incorrecto.</div>';
         }
@@ -94,6 +116,8 @@ export class LoginComponent implements OnInit {
             this.htmlModal =
               '<div class="alert alert-danger">Error en el servidor.</div>';
         }
+        this.btnmodal = 'Enviar';
+        this.btnmodal_enabled = true;
       }
     );
   }

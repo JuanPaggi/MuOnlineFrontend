@@ -19,5 +19,22 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
+    this.usuariosSrv
+      .get_user(new UsuarioByIdDto(this.user.id_usuario))
+      .subscribe(
+        (response) => {
+          this.Usuario = response;
+        },
+        (err) => {
+          switch (err.status) {
+            case 404: //user does not exist
+              console.log('Usuario no existe');
+              break;
+            case 500: //default error
+              console.log('Server error 500');
+              break;
+          }
+        }
+      );
   }
 }

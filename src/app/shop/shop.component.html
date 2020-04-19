@@ -1,1 +1,44 @@
-<p>shop works!</p>
+<div class="d-flex flex-column align-items-center">
+  <span class="titulo mb-0">Tienda</span>
+  <div *ngIf="logged" class="alert alert-info w-100 my-3">
+    Creditos disponibles: {{ Usuario.creditos }}
+  </div>
+  <div class="card text-center" style="width: 18rem;">
+    <img
+      class="card-img-top"
+      src="./assets/images/boxofluck.png"
+      alt="Box of Luck"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Lucky box</h5>
+      <p class="card-text">
+        Dropea un item <span class="text-success">exe</span> random.
+      </p>
+      <div *ngIf="logged">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Cantidad:</span>
+          </div>
+          <input
+            [(ngModel)]="cantidad"
+            type="text"
+            class="form-control"
+            (ngModelChange)="actualizar_precio()"
+            maxlength="3"
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">&cent; {{ cost }}</span>
+          </div>
+        </div>
+        <button
+          (click)="buy_boxes()"
+          class="btn btn-primary"
+          [disabled]="!boton_enabled"
+        >
+          <div [innerHTML]="boton"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div [innerHTML]="htmladd" class="my-3"></div>
+</div>

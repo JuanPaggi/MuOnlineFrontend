@@ -16,6 +16,7 @@ export class ForgotpasswordComponent implements OnInit {
   constructor(private usersSrv: UsersService) {
     this.boton = 'Enviar';
     this.boton_enabled = true;
+    this.username = '';
   }
 
   ngOnInit(): void {}

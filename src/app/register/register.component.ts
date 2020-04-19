@@ -85,6 +85,7 @@ export class RegisterComponent implements OnInit {
                         case 500:
                           this.htmladd =
                             '<div class="alert alert-danger">Error en el servidor.</div>';
+                          break;
                       }
                       this.boton = 'Enviar';
                       this.boton_enabled = true;

@@ -132,3 +132,9 @@
 # Joaco T 18/4/2020
 
 -Mostrar loading en boton e inhabilitar boton mientras de hace peticiones a backend.
+
+# Joaco T 18/4/2020
+
+-Implementacion de la tienda
+-Sistema de creditos
+-Botones que pegan al backend areeglados
