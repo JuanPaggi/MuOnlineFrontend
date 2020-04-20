@@ -68,3 +68,11 @@ span {
 }
 
 /* ----- CUERPO ----- */
+
+.players_rank {
+  min-height: 350px;
+}
+
+.guild_rank {
+  min-height: 250px;
+}
