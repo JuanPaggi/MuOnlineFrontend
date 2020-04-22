@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
 // DTOs
 import { PersonajeDatosDto } from 'src/app/dto/dto_pj/PersonajeDatosDto';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
+import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonajesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public get_character(
     body: PersonajeDatosDto
@@ -41,6 +42,28 @@ export class PersonajesService {
     );
   }
 
+
+  public move_character(body: UsuarioEditDto, uid: number): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/destrabarPersonaje/' + uid,
+      body
+    );
+  }
+
+  public warehouse_expand(body: UsuarioEditDto, uid: number): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/expandirBaul/' + uid,
+      body
+    );
+  }
+
+  public inventory_expand(body: UsuarioEditDto, uid: number): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/expandirInventario/' + uid,
+      body
+    );
+  }
+
   public buy_boxes(body: UsuarioEditDto, uid: number): Observable<Response> {
     let headers = {};
     return this.http.put<Response>(
@@ -49,4 +72,6 @@ export class PersonajesService {
       headers
     );
   }
+
+
 }

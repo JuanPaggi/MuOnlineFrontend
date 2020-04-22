@@ -4,4 +4,5 @@ export class UsuarioDatosDto {
   email: String;
   nombre: String;
   creditos: number;
+  baulExtra: boolean;
 }
