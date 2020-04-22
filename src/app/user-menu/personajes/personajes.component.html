@@ -63,7 +63,7 @@
     <span class="input-group-text">Contrase&ntilde;a</span>
   </div>
   <input type="password" class="form-control" [(ngModel)]="password">
-  <div class="input-group-append">
+  <div class="input-group-append" *ngIf="!Usuario.baulExtra">
     <button (click)="warehouse_expand()" class="btn btn-primary" type="button">Expandir Baul</button>
   </div>
 </div>

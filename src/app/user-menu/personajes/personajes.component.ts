@@ -4,6 +4,8 @@ import { UsersService } from 'src/app/services/users/users.service';
 import { User } from 'src/app/dto/user.model';
 import { PersonajesService } from 'src/app/services/personajes/personajes.service';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
+import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
+import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 
 @Component({
   selector: 'app-personajes',
@@ -13,6 +15,8 @@ import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 export class PersonajesComponent implements OnInit {
   user: User;
   personajes: PersonajeDatosDto[];
+  Usuario: UsuarioDatosDto;
+
 
   password: String;
 
@@ -34,6 +38,11 @@ export class PersonajesComponent implements OnInit {
       .subscribe((response) => {
         this.personajes = response;
       });
+    this.usuariosSrv.get_user(new UsuarioByIdDto(this.user.id_usuario)).subscribe(
+      response => {
+        this.Usuario = response;
+      }
+    )
   }
 
   options_controller(pj: String) {
