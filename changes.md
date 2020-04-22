@@ -138,3 +138,7 @@
 -Implementacion de la tienda
 -Sistema de creditos
 -Botones que pegan al backend areeglados
+
+# Joaco T 22/4/2020
+
+-Personajes: se agrego expandir baul e inventario, reiniciar posicion de personaje y pedido de contrasena para realizar estas acciones.
