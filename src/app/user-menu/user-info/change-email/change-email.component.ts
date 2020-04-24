@@ -17,7 +17,6 @@ export class ChangeEmailComponent implements OnInit {
   change_email_form: FormGroup;
 
   new_email: String;
-  password: String;
 
   htmlAdd: String;
   boton: String;
@@ -32,7 +31,7 @@ export class ChangeEmailComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.usuariosSrv
-      .get_user(new UsuarioByIdDto(this.user.id_usuario))
+      .get_user()
       .subscribe((response) => {
         this.Usuario = response;
       });
@@ -48,8 +47,7 @@ export class ChangeEmailComponent implements OnInit {
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     let dato = new UsuarioEditDto();
     dato.dato = this.new_email;
-    dato.dato2 = this.password;
-    this.usuariosSrv.edit_email(dato, this.Usuario.idUsuario).subscribe(
+    this.usuariosSrv.edit_email(dato).subscribe(
       (response) => {
         this.htmlAdd =
           '<div class="alert alert-success">Email cambiado correctamente.</div>';

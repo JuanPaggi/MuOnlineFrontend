@@ -17,7 +17,6 @@ export class ChangeNameComponent implements OnInit {
   change_name_form: FormGroup;
 
   new_name: String;
-  password: String;
 
   htmlAdd: String;
   boton: String;
@@ -32,7 +31,7 @@ export class ChangeNameComponent implements OnInit {
     this.boton = 'Cambiar';
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.usuariosSrv
-      .get_user(new UsuarioByIdDto(this.user.id_usuario))
+      .get_user()
       .subscribe((response) => {
         this.Usuario = response;
       });
@@ -48,8 +47,7 @@ export class ChangeNameComponent implements OnInit {
       '<span class="spinner-border spinner-border-sm mb-1"></span> Loading...';
     let dato = new UsuarioEditDto();
     dato.dato = this.new_name;
-    dato.dato2 = this.password;
-    this.usuariosSrv.edit_name(dato, this.Usuario.idUsuario).subscribe(
+    this.usuariosSrv.edit_name(dato).subscribe(
       (response) => {
         this.boton = 'Cambiar';
         this.boton_enabled = true;

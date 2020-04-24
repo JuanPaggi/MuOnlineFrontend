@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         if (response != 0) {
           this.id_usuario = response;
           this.usuariosSrv
-            .get_user(new UsuarioByIdDto(this.id_usuario))
+            .get_user()
             .subscribe((response) => {
               this.Usuario = response;
               this.logIn(this.usuario, this.id_usuario, event);

@@ -38,7 +38,7 @@ export class PersonajesComponent implements OnInit {
       .subscribe((response) => {
         this.personajes = response;
       });
-    this.usuariosSrv.get_user(new UsuarioByIdDto(this.user.id_usuario)).subscribe(
+    this.usuariosSrv.get_user().subscribe(
       response => {
         this.Usuario = response;
       }

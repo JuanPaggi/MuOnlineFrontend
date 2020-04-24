@@ -32,7 +32,7 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.usuariosSrv
-      .get_user(new UsuarioByIdDto(this.user.id_usuario))
+      .get_user()
       .subscribe((response) => {
         this.Usuario = response;
       });
@@ -56,7 +56,7 @@ export class ChangePasswordComponent implements OnInit {
       let dato = new UsuarioEditDto();
       dato.dato = this.password;
       dato.dato2 = this.new_pass1;
-      this.usuariosSrv.edit_password(dato, this.user.id_usuario).subscribe(
+      this.usuariosSrv.edit_password(dato).subscribe(
         (response) => {
           this.htmlAdd =
             '<div class="alert alert-success">Contrase&ntilde;a cambiada correctamente.</div>';
