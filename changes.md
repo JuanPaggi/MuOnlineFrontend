@@ -150,3 +150,7 @@
 # Joaco T 24/4/2020
 
 -Actualizacion servicios de personajes
+
+# Joaco T 24/4/2020 -2
+
+-Cambio de email eliminado

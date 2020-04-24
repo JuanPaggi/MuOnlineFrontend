@@ -21,7 +21,6 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { PersonajesComponent } from './user-menu/personajes/personajes.component';
 import { UserInfoComponent } from './user-menu/user-info/user-info.component';
 import { ChangeNameComponent } from './user-menu/user-info/change-name/change-name.component';
-import { ChangeEmailComponent } from './user-menu/user-info/change-email/change-email.component';
 import { ChangePasswordComponent } from './user-menu/user-info/change-password/change-password.component';
 import { UsersService } from './services/users/users.service';
 import { RecuperarComponent } from './recuperar/recuperar.component';
@@ -46,7 +45,6 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     PersonajesComponent,
     UserInfoComponent,
     ChangeNameComponent,
-    ChangeEmailComponent,
     ChangePasswordComponent,
     RecuperarComponent,
     ForgotpasswordComponent,
