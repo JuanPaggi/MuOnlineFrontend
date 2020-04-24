@@ -12,8 +12,7 @@ import { UsuarioByIdDto } from '../dto/dto_usuarios/UsuarioByIdDto';
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-  private user: User;
-  public Usuario: UsuarioDatosDto;
+  public user: User;
   public logged: boolean;
   public cantidad: String;
   public htmladd: String;
@@ -25,7 +24,6 @@ export class ShopComponent implements OnInit {
     private userSrv: UsersService,
     private characterSrv: PersonajesService
   ) {
-    this.Usuario = new UsuarioDatosDto();
     this.logged = false;
     this.boton = 'Comprar';
     this.boton_enabled = false;
@@ -36,21 +34,6 @@ export class ShopComponent implements OnInit {
     this.user = this.userSrv.getUserLoggedIn();
     if (this.user) {
       this.logged = true;
-      this.userSrv.get_user().subscribe(
-        (response) => {
-          this.Usuario = response;
-        },
-        (err) => {
-          switch (err.status) {
-            case 404: //user does not exist
-              console.log('Usuario no existe');
-              break;
-            case 500: //default error
-              console.log('Server error 500');
-              break;
-          }
-        }
-      );
     }
     this.actualizar_precio();
   }
@@ -63,7 +46,7 @@ export class ShopComponent implements OnInit {
     } else {
       this.cost = 0;
     }
-    if (this.cost > this.Usuario.creditos || this.cost == 0) {
+    if (this.cost > this.user.creditos || this.cost == 0) {
       this.boton_enabled = false;
     } else {
       this.boton_enabled = true;
@@ -82,7 +65,8 @@ export class ShopComponent implements OnInit {
         (response) => {
           this.boton = 'Comprar';
           this.boton_enabled = true;
-          this.Usuario.creditos -= this.cost;
+          this.user.creditos -= this.cost;
+          this.userSrv.setUserLoggedIn(this.user);
           this.htmladd =
             '<div class="alert alert-success">La compra fue realizada correctamente.</div>';
         },

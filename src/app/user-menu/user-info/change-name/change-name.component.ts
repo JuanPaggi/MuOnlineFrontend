@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
 import { User } from 'src/app/dto/user.model';
-import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 import { UsersService } from 'src/app/services/users/users.service';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 
@@ -13,7 +11,7 @@ import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 })
 export class ChangeNameComponent implements OnInit {
   user: User;
-  Usuario: UsuarioDatosDto;
+  
   change_name_form: FormGroup;
 
   new_name: String;
@@ -23,18 +21,12 @@ export class ChangeNameComponent implements OnInit {
   public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
-    this.Usuario = new UsuarioDatosDto();
     this.boton_enabled = true;
   }
 
   ngOnInit(): void {
     this.boton = 'Cambiar';
     this.user = this.usuariosSrv.getUserLoggedIn();
-    this.usuariosSrv
-      .get_user()
-      .subscribe((response) => {
-        this.Usuario = response;
-      });
     this.change_name_form = new FormGroup({
       new_name: new FormControl(Validators.required),
       password: new FormControl(Validators.required),
@@ -49,6 +41,8 @@ export class ChangeNameComponent implements OnInit {
     dato.dato = this.new_name;
     this.usuariosSrv.edit_name(dato).subscribe(
       (response) => {
+        this.user.nombre = this.new_name;
+        this.usuariosSrv.setUserLoggedIn(this.user);
         this.boton = 'Cambiar';
         this.boton_enabled = true;
         this.htmlAdd =

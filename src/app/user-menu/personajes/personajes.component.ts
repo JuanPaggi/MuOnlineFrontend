@@ -15,8 +15,6 @@ import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 export class PersonajesComponent implements OnInit {
   user: User;
   personajes: PersonajeDatosDto[];
-  Usuario: UsuarioDatosDto;
-
 
   password: String;
 
@@ -38,11 +36,6 @@ export class PersonajesComponent implements OnInit {
       .subscribe((response) => {
         this.personajes = response;
       });
-    this.usuariosSrv.get_user().subscribe(
-      response => {
-        this.Usuario = response;
-      }
-    )
   }
 
   options_controller(pj: String) {

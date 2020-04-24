@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
 import { User } from 'src/app/dto/user.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
-import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 
 @Component({
@@ -13,7 +11,7 @@ import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 })
 export class ChangePasswordComponent implements OnInit {
   user: User;
-  Usuario: UsuarioDatosDto;
+  
   change_pass_form: FormGroup;
 
   new_pass1: String;
@@ -24,18 +22,12 @@ export class ChangePasswordComponent implements OnInit {
   public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
-    this.Usuario = new UsuarioDatosDto();
     this.boton = 'Cambiar';
     this.boton_enabled = true;
   }
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
-    this.usuariosSrv
-      .get_user()
-      .subscribe((response) => {
-        this.Usuario = response;
-      });
     this.change_pass_form = new FormGroup({
       new_pass1: new FormControl(Validators.required),
       new_pass2: new FormControl(Validators.required),

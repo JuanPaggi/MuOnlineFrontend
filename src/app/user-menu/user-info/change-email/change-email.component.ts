@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users/users.service';
 import { User } from 'src/app/dto/user.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
-import { UsuarioDatosDto } from 'src/app/dto/dto_usuarios/UsuarioDatosDto';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 
 @Component({
@@ -13,7 +11,7 @@ import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
 })
 export class ChangeEmailComponent implements OnInit {
   user: User;
-  Usuario: UsuarioDatosDto;
+  
   change_email_form: FormGroup;
 
   new_email: String;
@@ -23,18 +21,12 @@ export class ChangeEmailComponent implements OnInit {
   public boton_enabled: boolean;
 
   constructor(private usuariosSrv: UsersService) {
-    this.Usuario = new UsuarioDatosDto();
     this.boton = 'Cambiar';
     this.boton_enabled = true;
   }
 
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
-    this.usuariosSrv
-      .get_user()
-      .subscribe((response) => {
-        this.Usuario = response;
-      });
     this.change_email_form = new FormGroup({
       new_email: new FormControl(Validators.required),
       password: new FormControl(Validators.required),
@@ -49,6 +41,8 @@ export class ChangeEmailComponent implements OnInit {
     dato.dato = this.new_email;
     this.usuariosSrv.edit_email(dato).subscribe(
       (response) => {
+        this.user.email = this.new_email;
+        this.usuariosSrv.setUserLoggedIn(this.user);
         this.htmlAdd =
           '<div class="alert alert-success">Email cambiado correctamente.</div>';
         this.boton = 'Cambiar';
