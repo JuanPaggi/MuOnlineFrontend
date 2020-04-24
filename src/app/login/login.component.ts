@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioLoginDto } from '../dto/dto_usuarios/UsuarioLoginDto';
 import { UsersService } from '../services/users/users.service';
 import { UsuarioDatosDto } from '../dto/dto_usuarios/UsuarioDatosDto';
-import { UsuarioByIdDto } from '../dto/dto_usuarios/UsuarioByIdDto';
 import { User } from '../dto/user.model';
 import { Router } from '@angular/router';
 import { UsuarioEditDto } from '../dto/dto_usuarios/UsuarioEditDto';
+import { SvStatusService } from '../services/sv_status/sv-status.service';
 
 declare var $: any;
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.btnmodal_enabled = true;
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.user = this.usuariosSrv.getUserLoggedIn();
     if (this.user) {
       this.usuario = this.user.username;
@@ -78,8 +78,12 @@ export class LoginComponent implements OnInit {
           case 401:
             this.htmlToAdd = '<p class="text-danger">Cuenta bloqueada.<p>';
             break;
+          case 403:
+            this.htmlToAdd = '<p class="text-danger">Servidor offline.<p>';
+            break;
           case 404:
             this.htmlModal = '<p class="text-danger">El usuario no existe.</p>';
+            break;
           case 500:
             this.htmlModal = '<p class="text-danger">Error en el servidor.</p>';
         }

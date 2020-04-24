@@ -13,6 +13,7 @@ import { UsuarioByIdDto } from '../dto/dto_usuarios/UsuarioByIdDto';
 })
 export class ShopComponent implements OnInit {
   public user: User;
+  public creditos: number;
   public logged: boolean;
   public cantidad: String;
   public htmladd: String;
@@ -33,7 +34,10 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userSrv.getUserLoggedIn();
     if (this.user) {
+      this.creditos = this.user.creditos;
       this.logged = true;
+    }else{
+      this.creditos = 0;
     }
     this.actualizar_precio();
   }
@@ -46,7 +50,7 @@ export class ShopComponent implements OnInit {
     } else {
       this.cost = 0;
     }
-    if (this.cost > this.user.creditos || this.cost == 0) {
+    if (this.cost > this.creditos || this.cost == 0) {
       this.boton_enabled = false;
     } else {
       this.boton_enabled = true;
@@ -65,7 +69,8 @@ export class ShopComponent implements OnInit {
         (response) => {
           this.boton = 'Comprar';
           this.boton_enabled = true;
-          this.user.creditos -= this.cost;
+          this.creditos -= this.cost;
+          this.user.creditos = this.creditos;
           this.userSrv.setUserLoggedIn(this.user);
           this.htmladd =
             '<div class="alert alert-success">La compra fue realizada correctamente.</div>';
