@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
     this.server.server_status().subscribe(
       (response) => {
         this.online = response;
+        if (!response) {
+          this.usuariosSrv.setUserLoggedOut();
+        }
+         
       },
       (err) => {
         switch (err.status) {
