@@ -14,6 +14,7 @@ import { ChangeNameComponent } from './user-menu/user-info/change-name/change-na
 import { ChangePasswordComponent } from './user-menu/user-info/change-password/change-password.component';
 import { RecuperarComponent } from './recuperar/recuperar.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'shop',
         component: ShopComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
       },
       {
         path: 'user',
