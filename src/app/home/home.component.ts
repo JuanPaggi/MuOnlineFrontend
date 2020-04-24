@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   }
 
   private load_ranking() {
-    this.pj_service.get_character(new PersonajeDatosDto()).subscribe(
+    this.pj_service.get_character().subscribe(
       (response) => {
         this.ranking = response;
         while (this.ranking.length > 10) {

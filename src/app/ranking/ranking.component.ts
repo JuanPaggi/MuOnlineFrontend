@@ -32,7 +32,7 @@ export class RankingComponent implements OnInit {
   }
 
   private load_ranking() {
-    this.pj_service.get_character(new PersonajeDatosDto()).subscribe(
+    this.pj_service.get_character().subscribe(
       (response) => {
         this.ranking = response;
         this.reset_ranking();

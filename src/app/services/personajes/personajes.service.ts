@@ -6,70 +6,70 @@ import { Observable } from 'rxjs';
 // DTOs
 import { PersonajeDatosDto } from 'src/app/dto/dto_pj/PersonajeDatosDto';
 import { UsuarioEditDto } from 'src/app/dto/dto_usuarios/UsuarioEditDto';
-import { UsuarioByIdDto } from 'src/app/dto/dto_usuarios/UsuarioByIdDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonajesService {
-  constructor(private http: HttpClient) { }
 
-  public get_character(
-    body: PersonajeDatosDto
-  ): Observable<PersonajeDatosDto[]> {
-    let headers = {};
+  private headers = { withCredentials: true };
+  
+  constructor(private http: HttpClient) { 
+  }
+
+  public get_character(): Observable<PersonajeDatosDto[]> {
     return this.http.get<PersonajeDatosDto[]>(
       environment.apiEndpoint + '/personajes',
-      headers
+      this.headers
     );
   }
 
-  public get_character_by_user(
-    body: PersonajeDatosDto,
-    uid: number
-  ): Observable<PersonajeDatosDto[]> {
-    let headers = {};
+  public get_character_by_user(): Observable<PersonajeDatosDto[]> {
     return this.http.get<PersonajeDatosDto[]>(
-      environment.apiEndpoint + '/personajes/' + uid,
-      headers
+      environment.apiEndpoint + '/personajes/personajesUsuario',
+      this.headers
     );
   }
 
-  public reset_points(body: UsuarioEditDto, uid: number): Observable<Response> {
+  public reset_points(body: UsuarioEditDto): Observable<Response> {
     return this.http.put<Response>(
-      environment.apiEndpoint + '/personajes/reiniciarPuntos/' + uid,
-      body
-    );
-  }
-
-
-  public move_character(body: UsuarioEditDto, uid: number): Observable<Response> {
-    return this.http.put<Response>(
-      environment.apiEndpoint + '/personajes/destrabarPersonaje/' + uid,
-      body
-    );
-  }
-
-  public warehouse_expand(body: UsuarioEditDto, uid: number): Observable<Response> {
-    return this.http.put<Response>(
-      environment.apiEndpoint + '/personajes/expandirBaul/' + uid,
-      body
-    );
-  }
-
-  public inventory_expand(body: UsuarioEditDto, uid: number): Observable<Response> {
-    return this.http.put<Response>(
-      environment.apiEndpoint + '/personajes/expandirInventario/' + uid,
-      body
-    );
-  }
-
-  public buy_boxes(body: UsuarioEditDto, uid: number): Observable<Response> {
-    let headers = {};
-    return this.http.put<Response>(
-      environment.apiEndpoint + '/personajes/tienda/' + uid,
+      environment.apiEndpoint + '/personajes/reiniciarPuntos',
       body,
-      headers
+      this.headers
+    );
+  }
+
+
+  public move_character(body: UsuarioEditDto): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/destrabarPersonaje',
+      body,
+      this.headers
+    );
+  }
+
+  public warehouse_expand(): Observable<Response> {
+    let body = {};
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/expandirBaul',
+      body,
+      this.headers
+    );
+  }
+
+  public inventory_expand(body: UsuarioEditDto): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/expandirInventario',
+      body,
+      this.headers
+    );
+  }
+
+  public buy_boxes(body: UsuarioEditDto): Observable<Response> {
+    return this.http.put<Response>(
+      environment.apiEndpoint + '/personajes/tienda',
+      body,
+      this.headers
     );
   }
 
