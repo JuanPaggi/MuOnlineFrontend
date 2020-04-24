@@ -2,21 +2,12 @@
   <form [formGroup]="change_name_form">
     <div class="form-group">
       <label for="inputEmail">Nuevo nombre:</label>
-      <input
-        [(ngModel)]="new_name"
-        [ngModelOptions]="{ standalone: true }"
-        type="email"
-        class="form-control"
-        placeholder="{{ Usuario.nombre }}"
-      />
+      <input [(ngModel)]="new_name" [ngModelOptions]="{ standalone: true }" type="email" class="form-control"
+        placeholder="{{ user.nombre }}" />
     </div>
     <div [innerHTML]="htmlAdd" class="my-2"></div>
 
-    <button
-      (click)="change_name()"
-      class="btn btn-primary"
-      [disabled]="!boton_enabled"
-    >
+    <button (click)="change_name()" class="btn btn-primary" [disabled]="!boton_enabled">
       <div [innerHTML]="boton"></div>
     </button>
   </form>

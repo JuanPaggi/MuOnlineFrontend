@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
             .get_user()
             .subscribe((response) => {
               this.Usuario = response;
-              this.logIn(this.usuario, this.id_usuario, event);
+              this.logIn(this.usuario, this.id_usuario, this.Usuario.email, this.Usuario.nombre, this.Usuario.creditos, this.Usuario.baulExtra, event);
               window.location.href = '/';
             });
         } else {
@@ -122,9 +122,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  logIn(username: String, id_usuario: number, event: Event) {
+  logIn(username: String, id_usuario: number, email:String, nombre:String, creditos:number, baulExtra:boolean, event: Event) {
     event.preventDefault();
-    let u: User = { username, id_usuario };
+    let u: User = { username, id_usuario, email, nombre, creditos, baulExtra };
     this.usuariosSrv.setUserLoggedIn(u);
   }
 

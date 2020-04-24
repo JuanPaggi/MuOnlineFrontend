@@ -21,7 +21,6 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     if (this.user) {
-      this.usuario = this.user.username;
       this.logged = true;
     }
   }
