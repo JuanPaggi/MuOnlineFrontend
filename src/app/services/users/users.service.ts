@@ -18,6 +18,8 @@ export class UsersService {
   private isUserLoggedIn: boolean;
   public usserLogged: User;
 
+  private headers = {withCredentials: true};
+
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
   }
@@ -40,7 +42,8 @@ export class UsersService {
   public verify_user(body: UsuarioLoginDto): Observable<number> {
     return this.http.post<number>(
       environment.apiEndpoint + '/usuarios/login',
-      body
+      body,
+      this.headers
     );
   }
 
@@ -54,38 +57,32 @@ export class UsersService {
   }
 
   public edit_name(
-    body: UsuarioEditDto,
-    id_user: number
+    body: UsuarioEditDto
   ): Observable<Response> {
-    let headers = {};
     return this.http.put<Response>(
-      environment.apiEndpoint + '/usuarios/nombre/' + id_user,
+      environment.apiEndpoint + '/usuarios/nombre',
       body,
-      headers
+      this.headers
     );
   }
 
   public edit_email(
-    body: UsuarioEditDto,
-    id_user: number
+    body: UsuarioEditDto
   ): Observable<Response> {
-    let headers = {};
     return this.http.put<Response>(
-      environment.apiEndpoint + '/usuarios/email/' + id_user,
+      environment.apiEndpoint + '/usuarios/email',
       body,
-      headers
+      this.headers
     );
   }
 
   public edit_password(
-    body: UsuarioEditDto,
-    uid: number
+    body: UsuarioEditDto
   ): Observable<Response> {
-    let headers = {};
     return this.http.put<Response>(
-      environment.apiEndpoint + '/usuarios/clave/' + uid,
+      environment.apiEndpoint + '/usuarios/clave',
       body,
-      headers
+      this.headers
     );
   }
 
