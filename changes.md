@@ -154,3 +154,7 @@
 # Joaco T 24/4/2020 -2
 
 -Cambio de email eliminado
+
+# Joaco T 24/4/2020 -3
+
+-Seccion de contacto temporal actualizada
