@@ -65,7 +65,7 @@ export class ShopComponent implements OnInit {
     if (this.cantidad != '0') {
       let dato = new UsuarioEditDto();
       dato.dato = this.cantidad;
-      this.characterSrv.buy_boxes(dato, this.user.id_usuario).subscribe(
+      this.characterSrv.buy_boxes(dato).subscribe(
         (response) => {
           this.boton = 'Comprar';
           this.boton_enabled = true;

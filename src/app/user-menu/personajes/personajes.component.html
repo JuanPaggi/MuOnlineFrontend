@@ -58,13 +58,9 @@
     </tr>
   </tbody>
 </table>
-<div class="input-group my-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Contrase&ntilde;a</span>
-  </div>
-  <input type="password" class="form-control" [(ngModel)]="password">
-  <div class="input-group-append" *ngIf="!user.baulExtra">
-    <button (click)="warehouse_expand()" class="btn btn-primary" type="button">Expandir Baul</button>
-  </div>
+
+<div class="input-group-append" *ngIf="!user.baulExtra">
+  <button (click)="warehouse_expand()" class="btn btn-outline-primary btn-block" type="button">Expandir Baul</button>
 </div>
+
 <div class="my-1" [innerHTML]="htmlAdd"></div>

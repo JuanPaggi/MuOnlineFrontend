@@ -32,7 +32,7 @@ export class PersonajesComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.personajesSrv
-      .get_character_by_user(new PersonajeDatosDto(), this.user.id_usuario)
+      .get_character_by_user()
       .subscribe((response) => {
         this.personajes = response;
       });
@@ -40,8 +40,6 @@ export class PersonajesComponent implements OnInit {
 
   options_controller(pj: String) {
 
-    if (this.password) {
-      if (this.password.length > 3 && this.password.length < 16) {
         switch (this.option) {
           case '0':
             this.reset_points(pj);
@@ -56,22 +54,14 @@ export class PersonajesComponent implements OnInit {
             this.htmlAdd =
               '<div class="alert alert-danger">Seleccione una opcion correcta.</div>';
         }
-      } else {
-        this.htmlAdd =
-          '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
-      }
-    } else {
-      this.htmlAdd =
-        '<div class="alert alert-danger">Ingrese su contrase&ntilde;a.</div>';
-    }
+
   }
 
 
   reset_points(pj: String) {
     let dato = new UsuarioEditDto();
     dato.dato = pj;
-    dato.dato2 = this.password;
-    this.personajesSrv.reset_points(dato, this.user.id_usuario).subscribe(
+    this.personajesSrv.reset_points(dato).subscribe(
       (response) => {
         this.htmlAdd =
           '<div class="alert alert-success">Puntos reiniciados correctamente.</div>';
@@ -96,8 +86,7 @@ export class PersonajesComponent implements OnInit {
   move_character(pj: String) {
     let dato = new UsuarioEditDto();
     dato.dato = pj;
-    dato.dato2 = this.password;
-    this.personajesSrv.move_character(dato, this.user.id_usuario).subscribe(
+    this.personajesSrv.move_character(dato).subscribe(
       (response) => {
         this.htmlAdd =
           '<div class="alert alert-success">Personaje destrabado correctamente.</div>';
@@ -122,8 +111,7 @@ export class PersonajesComponent implements OnInit {
   inventory_expand(pj: String) {
     let dato = new UsuarioEditDto();
     dato.dato = pj;
-    dato.dato2 = this.password;
-    this.personajesSrv.inventory_expand(dato, this.user.id_usuario).subscribe(
+    this.personajesSrv.inventory_expand(dato).subscribe(
       (response) => {
         this.htmlAdd =
           '<div class="alert alert-success">Inventario expandido correctamente.</div>';
@@ -150,12 +138,8 @@ export class PersonajesComponent implements OnInit {
   }
 
   warehouse_expand() {
-    if (this.password) {
-      if (this.password.length > 3 && this.password.length < 16) {
 
-        let dato = new UsuarioEditDto();
-        dato.dato = this.password;
-        this.personajesSrv.warehouse_expand(dato, this.user.id_usuario).subscribe(
+        this.personajesSrv.warehouse_expand().subscribe(
           (response) => {
             this.htmlAdd =
               '<div class="alert alert-success">Baul expandido correctamente.</div>';
@@ -175,13 +159,6 @@ export class PersonajesComponent implements OnInit {
             }
           }
         );
-      } else {
-        this.htmlAdd =
-          '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
-      }
-    } else {
-      this.htmlAdd =
-        '<div class="alert alert-danger">Ingrese su contrase&ntilde;a.</div>';
-    }
+      
   }
 }
