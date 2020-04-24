@@ -31,11 +31,10 @@ export class UsersService {
     );
   }
 
-  public get_user(body: UsuarioByIdDto): Observable<UsuarioDatosDto> {
-    let headers = {};
+  public get_user(): Observable<UsuarioDatosDto> {
     return this.http.get<UsuarioDatosDto>(
-      environment.apiEndpoint + '/usuarios/' + body.id_usuario,
-      headers
+      environment.apiEndpoint + '/usuarios',
+      this.headers
     );
   }
 

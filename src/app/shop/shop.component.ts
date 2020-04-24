@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit {
     this.user = this.userSrv.getUserLoggedIn();
     if (this.user) {
       this.logged = true;
-      this.userSrv.get_user(new UsuarioByIdDto(this.user.id_usuario)).subscribe(
+      this.userSrv.get_user().subscribe(
         (response) => {
           this.Usuario = response;
         },

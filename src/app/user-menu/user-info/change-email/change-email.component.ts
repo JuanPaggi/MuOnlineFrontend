@@ -31,7 +31,7 @@ export class ChangeEmailComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.usuariosSrv.getUserLoggedIn();
     this.usuariosSrv
-      .get_user(new UsuarioByIdDto(this.user.id_usuario))
+      .get_user()
       .subscribe((response) => {
         this.Usuario = response;
       });

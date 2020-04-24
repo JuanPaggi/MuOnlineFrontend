@@ -142,3 +142,7 @@
 # Joaco T 22/4/2020
 
 -Personajes: se agrego expandir baul e inventario, reiniciar posicion de personaje y pedido de contrasena para realizar estas acciones.
+
+# Joaco T 24/4/2020
+
+-Se agrego sesion en el backend, se elimino todo dato no necesario de el servicio usuario, falta del servicio personajes.
