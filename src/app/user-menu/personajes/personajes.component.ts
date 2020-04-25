@@ -151,7 +151,7 @@ export class PersonajesComponent implements OnInit {
               case 403:
                 this.htmlAdd =
                   '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
-                break
+                  break;
               case 404:
                 this.htmlAdd =
                   '<div class="alert alert-danger">El usuario no existe.</div>';
@@ -159,6 +159,7 @@ export class PersonajesComponent implements OnInit {
               case 500:
                 this.htmlAdd =
                   '<div class="alert alert-danger">Error en el servidor.</div>';
+                break;
             }
           }
         );
