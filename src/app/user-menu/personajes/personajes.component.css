@@ -13,3 +13,8 @@
 p{
     margin: 0;
 }
+
+.contenedor-boton{
+    width: 140px;
+    margin-right: 40px;
+}

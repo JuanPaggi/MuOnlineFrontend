@@ -51,6 +51,9 @@
   </tbody>
 </table>
 <div class="contenedor-lista">
+  <div class="input-group-append contenedor-boton" *ngIf="!user.baulExtra">
+    <button (click)="warehouse_expand()" class="btn btn-outline-primary btn-block" type="button">Expandir Baul</button>
+  </div>
   <!-- LISTA DE OPCIONES -->
   <p>Seleccion una opcion: &nbsp;&nbsp;</p>
   <select name="options" [(ngModel)]="option" class="form-control form-control-sm lista">
@@ -58,9 +61,6 @@
     <option value="1">Destrabar personaje</option>
     <option value="2">Expandir inventario</option>
   </select>
-</div>
-<div class="input-group-append" *ngIf="!user.baulExtra">
-  <button (click)="warehouse_expand()" class="btn btn-outline-primary btn-block" type="button">Expandir Baul</button>
 </div>
 
 <div class="my-1" [innerHTML]="htmlAdd"></div>

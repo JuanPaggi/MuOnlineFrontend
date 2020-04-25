@@ -116,9 +116,11 @@ export class LoginComponent implements OnInit {
           case 404:
             this.htmlModal =
               '<div class="alert alert-danger">El usuario no existe.</div>';
+            break;
           case 500:
             this.htmlModal =
               '<div class="alert alert-danger">Error en el servidor.</div>';
+            break;
         }
         this.btnmodal = 'Enviar';
         this.btnmodal_enabled = true;

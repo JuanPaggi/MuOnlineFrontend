@@ -30,8 +30,10 @@ export class RecuperarComponent implements OnInit {
           case 404:
             this.htmladd =
               '<div class="alert alert-danger">El usuario no existe.</div>';
+            break;
           case 500:
             '<div class="alert alert-danger">Ocurrio un error inesperado, vuelva a intentarlo en unos momentos.</div>';
+            break;
         }
       }
     );
