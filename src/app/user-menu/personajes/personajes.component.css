@@ -1,0 +1,15 @@
+.lista{
+    width: 150px;
+}
+
+.contenedor-lista{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 35px;
+    padding-bottom: 10px;
+}
+
+p{
+    margin: 0;
+}

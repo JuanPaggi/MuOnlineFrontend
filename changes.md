@@ -158,3 +158,8 @@
 # Joaco T 24/4/2020 -3
 
 -Seccion de contacto temporal actualizada
+
+# Juan Paggi 24/4/2020
+
+-Se agregaron alguans noticias y otro.
+-Se cambio las opciones en personajes.

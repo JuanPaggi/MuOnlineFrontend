@@ -35,14 +35,6 @@
       <td class="py-1 align-middle">{{ item.nroLevel }}</td>
       <td class="py-1 align-middle">{{ item.nroReset }}</td>
       <td class="py-1 align-middle">
-        <!-- LISTA DE OPCIONES -->
-        <select name="options" [(ngModel)]="option" class="form-control form-control-sm">
-          <option value="0">Reiniciar puntos</option>
-          <option value="1">Destrabar personaje</option>
-          <option value="2">Expandir inventario</option>
-        </select>
-      </td>
-      <td class="py-1 align-middle">
         <button (click)="options_controller(item.personaje)" class="btn btn-primary btn-sm">
           <svg class="bi bi-arrow-bar-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
             xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +50,15 @@
     </tr>
   </tbody>
 </table>
-
+<div class="contenedor-lista">
+  <!-- LISTA DE OPCIONES -->
+  <p>Seleccion una opcion: &nbsp;&nbsp;</p>
+  <select name="options" [(ngModel)]="option" class="form-control form-control-sm lista">
+    <option value="0">Reiniciar puntos</option>
+    <option value="1">Destrabar personaje</option>
+    <option value="2">Expandir inventario</option>
+  </select>
+</div>
 <div class="input-group-append" *ngIf="!user.baulExtra">
   <button (click)="warehouse_expand()" class="btn btn-outline-primary btn-block" type="button">Expandir Baul</button>
 </div>
