@@ -12,3 +12,16 @@ span {
   font-size: 35px;
   font-weight: bold;
 }
+
+.titulo-consejo{
+  font-size: 24px;
+}
+
+p{
+  margin-bottom: 5px;
+}
+
+.link-herramientas{
+  color: blue;
+  font-weight: 600;
+}
