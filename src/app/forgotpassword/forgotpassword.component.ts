@@ -40,9 +40,11 @@ export class ForgotpasswordComponent implements OnInit {
             case 500:
               this.htmladd =
                 '<div class="alert alert-danger">Ocurrio un error inesperado, intente nuevamente mas tarde.</div>';
+              break;
             case 404:
               this.htmladd =
                 '<div class="alert alert-danger">El usuario ingresado no existe.</div>';
+              break;
           }
           this.boton_enabled = true;
           this.boton = 'Enviar';

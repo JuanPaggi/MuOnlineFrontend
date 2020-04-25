@@ -69,6 +69,7 @@ export class PersonajesComponent implements OnInit {
           case 403:
             this.htmlAdd =
               '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+            break;
           case 404:
             this.htmlAdd =
               '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
@@ -94,9 +95,10 @@ export class PersonajesComponent implements OnInit {
           case 403:
             this.htmlAdd =
               '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+            break;
           case 404:
             this.htmlAdd =
-              '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+              '<div class="alert alert-danger">El usuario no existe.</div>';
             break;
           case 500:
             this.htmlAdd =
@@ -123,9 +125,10 @@ export class PersonajesComponent implements OnInit {
           case 403:
             this.htmlAdd =
               '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+            break;
           case 404:
             this.htmlAdd =
-              '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+              '<div class="alert alert-danger">El usuario no existe.</div>';
             break;
           case 500:
             this.htmlAdd =
@@ -139,6 +142,7 @@ export class PersonajesComponent implements OnInit {
 
         this.personajesSrv.warehouse_expand().subscribe(
           (response) => {
+            this.user.baulExtra = true;
             this.htmlAdd =
               '<div class="alert alert-success">Baul expandido correctamente.</div>';
           },
@@ -147,9 +151,10 @@ export class PersonajesComponent implements OnInit {
               case 403:
                 this.htmlAdd =
                   '<div class="alert alert-danger">Cierre la cuenta en el cliente y vuelva a intentarlo.</div>';
+                break
               case 404:
                 this.htmlAdd =
-                  '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+                  '<div class="alert alert-danger">El usuario no existe.</div>';
                 break;
               case 500:
                 this.htmlAdd =
