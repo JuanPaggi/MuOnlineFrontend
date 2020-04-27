@@ -53,9 +53,12 @@ export class ChangeNameComponent implements OnInit {
           case 403:
             this.htmlAdd =
               '<div class="alert alert-danger">Contrase&ntilde;a incorrecta.</div>';
+              break;
           case 500:
             this.htmlAdd =
               '<div class="alert alert-danger">Error en el servidor.</div>';
+            this.usuariosSrv.setUserLoggedOut();
+            break;
         }
         this.boton_enabled = true;
         this.boton = 'Cambiar';

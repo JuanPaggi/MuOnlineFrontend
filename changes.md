@@ -163,3 +163,7 @@
 
 -Se agregaron alguans noticias y otro.
 -Se cambio las opciones en personajes.
+
+# Joaco T 27/4/2020
+
+-Se agrego logout cuando el backend responde con un 500
