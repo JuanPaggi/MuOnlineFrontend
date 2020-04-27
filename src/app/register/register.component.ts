@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private verify_email(email: String) {
-    return email.includes('@') && email.includes('.com');
+    return email.includes('@') && email.includes('.com') && !email.includes('+');
   }
 
   add_user() {
