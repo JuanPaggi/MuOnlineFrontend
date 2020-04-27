@@ -93,6 +93,7 @@ export class ShopComponent implements OnInit {
             case 500: //general
               this.htmladd =
                 '<div class="alert alert-danger">Ocurrio un error inesperado, intente de nuevo mas tarde.</div>';
+              this.userSrv.setUserLoggedOut();  
               break;
           }
           this.boton = 'Comprar';
