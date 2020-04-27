@@ -167,3 +167,4 @@
 # Joaco T 27/4/2020
 
 -Se agrego logout cuando el backend responde con un 500
+-Ya no se muestran los usuarios conectados cuando el servidor esta offline
